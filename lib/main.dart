@@ -1,5 +1,7 @@
+import 'package:coolflutterapp/db/choosy.db.dart';
 import 'package:coolflutterapp/editor.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,16 +10,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Provider(
+      create: (_) => ChoosyDatabase(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => MyHomePage(),
+          '/editor': (ctx) => Editor(),
+        },
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => MyHomePage(),
-        '/editor': (ctx) => Editor(),
-      },
     );
   }
 }
