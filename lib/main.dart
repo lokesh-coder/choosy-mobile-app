@@ -1,5 +1,7 @@
 import 'package:coolflutterapp/db/choosy.db.dart';
 import 'package:coolflutterapp/editor.dart';
+import 'package:coolflutterapp/play.dart';
+import 'package:coolflutterapp/widgets/pickslist.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (ctx) => MyHomePage(),
           '/editor': (ctx) => Editor(),
+          '/play': (ctx) => PlayScreen(),
         },
       ),
     );
@@ -30,61 +33,38 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Choosy',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Color(0xFFFFFFFF),
-        elevation: 0,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.playlist_add,
-              color: Colors.grey,
-            ),
-            onPressed: () {},
+        appBar: AppBar(
+          title: Text(
+            'Choosy',
+            style: TextStyle(color: Colors.black),
           ),
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.grey,
-            ),
-            onPressed: () {},
-          )
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Create new action',
-            ),
-            FlatButton(
-              child: Text("add new"),
+          backgroundColor: Color(0xFFFFFFFF),
+          elevation: 0,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.playlist_add,
+                color: Colors.grey,
+              ),
               onPressed: () {
-                print('you cliked me');
-                Navigator.pushNamed(context, '/editor');
+                Navigator.pushNamed(context, '/editor',
+                    arguments: {'id': null});
               },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.settings,
+                color: Colors.grey,
+              ),
+              onPressed: () {},
             )
           ],
         ),
-      ),
-    );
+        body: PicksList());
   }
 }
