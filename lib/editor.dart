@@ -29,7 +29,7 @@ class _EditorState extends State<Editor> {
             stream: db.watchPickWithChoices(args['id']),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                print('all choises ${snapshot.data}');
+                // print('all choises ${snapshot.data}');
                 return GestureDetector(
                   child: Text(snapshot.data.length > 0
                       ? snapshot.data[0]['title']

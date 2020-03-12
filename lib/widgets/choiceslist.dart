@@ -14,7 +14,6 @@ class ChoicesList extends StatelessWidget {
       child: ListView.builder(
         itemCount: data.length,
         itemBuilder: (BuildContext ctxt, int index) {
-          print('**** ${data[index]} $index');
           return ListTile(
             leading: FlutterLogo(),
             title: Text(data[index]['choice']),

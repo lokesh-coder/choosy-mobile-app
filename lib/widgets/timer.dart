@@ -39,7 +39,7 @@ class _NextPickTimerState extends State<NextPickTimer> {
     final time2 = DateTime.now();
     int diff = widget.time.difference(time2).inSeconds;
 
-    print(diff);
+    // print(diff);
     remainingSec = diff;
 
     if (diff <= 0) {

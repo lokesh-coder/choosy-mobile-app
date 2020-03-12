@@ -107,8 +107,6 @@ class ChoosyDatabase extends _$ChoosyDatabase {
       };
     }).toList();
 
-    print('________ ${f}');
-
     return f;
   }
 
