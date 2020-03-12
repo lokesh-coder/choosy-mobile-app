@@ -1,6 +1,7 @@
 import 'package:coolflutterapp/db/choosy.db.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
 
 class PickItem extends StatelessWidget {
   final Pick pick;
@@ -9,6 +10,7 @@ class PickItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ChoosyDatabase db = Provider.of<ChoosyDatabase>(context);
     return Container(
       child: Slidable(
         actionPane: SlidableDrawerActionPane(),
@@ -28,7 +30,9 @@ class PickItem extends StatelessWidget {
             caption: 'Delete',
             color: Colors.red,
             icon: Icons.delete,
-            onTap: () {},
+            onTap: () async {
+              await db.deletePick(pick.id);
+            },
           ),
           IconSlideAction(
             caption: 'Edit',

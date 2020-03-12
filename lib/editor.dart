@@ -28,23 +28,34 @@ class _EditorState extends State<Editor> {
         title: StreamBuilder<dynamic>(
             stream: db.watchPickWithChoices(args['id']),
             builder: (context, snapshot) {
-              return GestureDetector(
-                child: Text(snapshot.data.length > 0
-                    ? snapshot.data[0]['title']
-                    : 'Add new action'),
-                onTap: () async {
-                  await formSheet(
-                      context: context,
-                      defaultValue: title ?? '',
-                      titleName: "Add new card",
-                      shouldCloseAfterAdd: true,
-                      onEnter: (text) async {
-                        print('you have entered $text');
-                        await db.addPick(Pick(title: '$text'));
-                        setState(() {});
-                      });
-                },
-              );
+              if (snapshot.hasData) {
+                print('all choises ${snapshot.data}');
+                return GestureDetector(
+                  child: Text(snapshot.data.length > 0
+                      ? snapshot.data[0]['title']
+                      : 'Add new Card'),
+                  onTap: () async {
+                    await formSheet(
+                        context: context,
+                        defaultValue: snapshot.data.length > 0
+                            ? snapshot.data[0]['title']
+                            : '',
+                        titleName: "Add new card",
+                        shouldCloseAfterAdd: true,
+                        onEnter: (text) async {
+                          if (snapshot.data.isEmpty) {
+                            await db.addPick(Pick(title: '$text'));
+                          } else {
+                            await db.updatePick(Pick(
+                                title: '$text', id: snapshot.data[0]['id']));
+                          }
+
+                          setState(() {});
+                        });
+                  },
+                );
+              }
+              return Text('Loading...');
             }),
         actions: <Widget>[
           IconButton(

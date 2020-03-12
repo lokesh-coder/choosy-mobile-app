@@ -53,6 +53,19 @@ class ChoosyDatabase extends _$ChoosyDatabase {
         modifiedTime: Value(DateTime.now())));
   }
 
+  Future updatePick(Pick entry) async {
+    return (update(picks)..where((p) => p.id.equals(entry.id))).write(
+      PicksCompanion(
+          title: Value(entry.title), modifiedTime: Value(DateTime.now())),
+    );
+  }
+
+  Future deletePick(int id) {
+    return (delete(picks)..where((p) => p.id.equals(id))).go().then((int _id) {
+      return (delete(choices)..where((c) => c.pid.equals(id))).go();
+    });
+  }
+
   Stream<List<Pick>> watchPicks() {
     return (select(picks)).watch();
   }
@@ -78,10 +91,12 @@ class ChoosyDatabase extends _$ChoosyDatabase {
   }
 
   Future<List<dynamic>> getPickWithChoices(id) async {
-    var allPicks = await (select(picks)..where((pick) => pick.id.equals(id)))
-        .join([innerJoin(choices, choices.pid.equalsExp(picks.id))]).get();
+    var allPicks = await (((select(picks)..where((pick) => pick.id.equals(id))))
+            .join([innerJoin(choices, choices.pid.equalsExp(picks.id))])
+              ..orderBy([OrderingTerm(expression: choices.id)]))
+        .get();
 
-    return allPicks.map((row) {
+    var f = allPicks.map((row) {
       var _picks = row.readTable(picks);
       var _choices = row.readTable(choices);
       return {
@@ -91,6 +106,10 @@ class ChoosyDatabase extends _$ChoosyDatabase {
         'cid': _choices.id,
       };
     }).toList();
+
+    print('________ ${f}');
+
+    return f;
   }
 
   /* choices */
