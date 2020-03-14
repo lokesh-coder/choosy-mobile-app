@@ -13,5 +13,6 @@ Map<String, Color> choosyColors = {
   "highlightBgStart": Color(0xFF283054),
   "highlightBgEnd": Color(0xFF535D8B),
   "info": Color(0xFFE48989),
-  "tile": Color(0xFFF6F7FB),
+  "tile": Color(0xFFEFF1FA),
+  "input": Color(0xFFF7F7F8),
 };

@@ -1,3 +1,5 @@
+import 'package:coolflutterapp/config/colors.dart';
+import 'package:coolflutterapp/config/icons.dart';
 import 'package:flutter/material.dart';
 
 formSheet(
@@ -12,12 +14,14 @@ formSheet(
   return showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
+      shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(10.0)),
       builder: (BuildContext context) {
         inpController.text = defaultValue ?? '';
         inpController.selection = TextSelection.fromPosition(
           TextPosition(offset: inpController.text.length),
         );
-        return Padding(
+        return Container(
           padding: const EdgeInsets.all(30.0),
           child: Container(
             child: Padding(
@@ -37,20 +41,40 @@ formSheet(
                     children: <Widget>[
                       Expanded(
                           child: TextField(
+                        textInputAction: TextInputAction.go,
                         controller: inpController,
                         keyboardType: TextInputType.text,
                         autofocus: true,
-                        decoration: InputDecoration(hintText: placeholderText),
+                        decoration: InputDecoration(
+                          hintText: placeholderText,
+                          filled: true,
+                          fillColor: choosyColors['input'],
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(10.7),
+                          ),
+                        ),
                         onChanged: (text) {
                           inpText = text;
                         },
+                        onSubmitted: (text) {
+                          _onFormSubmit(
+                            inpController,
+                            onEnter,
+                            inpText,
+                          );
+                          Navigator.pop(context);
+                        },
                       )),
                       IconButton(
-                          icon: Icon(Icons.check),
+                          icon: Icon(ChoosyIcon.send_plane_2_fill),
+                          color: choosyColors['positive'],
                           onPressed: () {
-                            inpController.clear();
-                            onEnter(inpText);
-                            inpText = '';
+                            _onFormSubmit(
+                              inpController,
+                              onEnter,
+                              inpText,
+                            );
                             if (shouldCloseAfterAdd) Navigator.pop(context);
                           })
                     ],
@@ -61,4 +85,14 @@ formSheet(
           ),
         );
       });
+}
+
+void _onFormSubmit(
+  TextEditingController inpController,
+  void onEnter(String text),
+  String inpText,
+) {
+  inpController.clear();
+  onEnter(inpText);
+  inpText = '';
 }

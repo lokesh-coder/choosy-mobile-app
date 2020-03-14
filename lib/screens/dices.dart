@@ -1,36 +1,8 @@
-import 'package:coolflutterapp/editor.dart';
-import 'package:coolflutterapp/play.dart';
-import 'package:coolflutterapp/screens/home.dart';
 import 'package:coolflutterapp/widgets/dice-list.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(ChoosyApp());
-}
-
-class ChoosyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Manrope',
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => HomeScreen(),
-        '/editor': (ctx) => Editor(),
-        '/play': (ctx) => PlayScreen(),
-      },
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  Home({Key key, this.title}) : super(key: key);
-
-  final String title;
+class DicesScreen extends StatelessWidget {
+  const DicesScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +33,7 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: DiceList(),
+      body: DiceList(), // pass dices to avoid db query
     );
   }
 }
