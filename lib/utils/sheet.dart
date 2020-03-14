@@ -4,6 +4,7 @@ formSheet(
     {BuildContext context,
     String titleName,
     String defaultValue,
+    String placeholderText = '',
     void Function(String text) onEnter,
     bool shouldCloseAfterAdd = false}) {
   final inpController = TextEditingController();
@@ -37,8 +38,9 @@ formSheet(
                       Expanded(
                           child: TextField(
                         controller: inpController,
+                        keyboardType: TextInputType.text,
                         autofocus: true,
-                        decoration: InputDecoration(),
+                        decoration: InputDecoration(hintText: placeholderText),
                         onChanged: (text) {
                           inpText = text;
                         },

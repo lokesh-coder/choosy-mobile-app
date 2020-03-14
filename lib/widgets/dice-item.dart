@@ -1,16 +1,16 @@
-import 'package:coolflutterapp/db/choosy.db.dart';
+import 'package:coolflutterapp/dao/dice.dao.dart';
+import 'package:coolflutterapp/models/dice.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:provider/provider.dart';
 
-class PickItem extends StatelessWidget {
-  final Pick pick;
+class DiceItem extends StatelessWidget {
+  final Dice dice;
+  final Function onDelete;
 
-  PickItem({this.pick});
+  DiceItem({this.dice, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
-    final ChoosyDatabase db = Provider.of<ChoosyDatabase>(context);
     return Container(
       child: Slidable(
         actionPane: SlidableDrawerActionPane(),
@@ -19,9 +19,10 @@ class PickItem extends StatelessWidget {
           color: Colors.white,
           child: ListTile(
             leading: FlutterLogo(),
-            title: Text(pick.title),
+            title: Text(dice.title),
+            subtitle: Text('${dice.choices.length} choices'),
             onTap: () {
-              Navigator.pushNamed(context, '/play', arguments: {'id': pick.id});
+              Navigator.pushNamed(context, '/play', arguments: {'id': dice.id});
             },
           ),
         ),
@@ -31,7 +32,8 @@ class PickItem extends StatelessWidget {
             color: Colors.red,
             icon: Icons.delete,
             onTap: () async {
-              await db.deletePick(pick.id);
+              await DiceDao().delete(Dice(id: dice.id));
+              onDelete(dice.title);
             },
           ),
           IconSlideAction(
@@ -40,7 +42,7 @@ class PickItem extends StatelessWidget {
             icon: Icons.edit,
             onTap: () {
               Navigator.pushNamed(context, '/editor',
-                  arguments: {'id': pick.id});
+                  arguments: {'id': dice.id});
             },
           ),
         ],

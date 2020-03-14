@@ -1,9 +1,11 @@
-import 'dart:math';
-import 'package:coolflutterapp/db/choosy.db.dart';
-import 'package:coolflutterapp/sheet.dart';
+import 'package:coolflutterapp/dao/dice.dao.dart';
+import 'package:coolflutterapp/models/choice.model.dart';
+import 'package:coolflutterapp/models/dice.model.dart';
+import 'package:coolflutterapp/utils/notify.dart';
+import 'package:coolflutterapp/utils/sheet.dart';
+import 'package:coolflutterapp/widgets/blank-dice.dart';
 import 'package:coolflutterapp/widgets/choiceslist.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Editor extends StatefulWidget {
   @override
@@ -11,9 +13,7 @@ class Editor extends StatefulWidget {
 }
 
 class _EditorState extends State<Editor> {
-  List<String> items = [];
-  String title;
-
+  Map updatedDice;
   @override
   void initState() {
     super.initState();
@@ -21,81 +21,91 @@ class _EditorState extends State<Editor> {
 
   @override
   Widget build(BuildContext context) {
-    final ChoosyDatabase db = Provider.of<ChoosyDatabase>(context);
-    final dynamic args = ModalRoute.of(context).settings.arguments;
-    return Scaffold(
-      appBar: AppBar(
-        title: StreamBuilder<dynamic>(
-            stream: db.watchPickWithChoices(args['id']),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                // print('all choises ${snapshot.data}');
-                return GestureDetector(
-                  child: Text(snapshot.data.length > 0
-                      ? snapshot.data[0]['title']
-                      : 'Add new Card'),
-                  onTap: () async {
+    final dynamic args =
+        updatedDice ?? ModalRoute.of(context).settings.arguments;
+    return FutureBuilder(
+      future: DiceDao().getADice(args['id']),
+      builder: (ctx, snapshot) {
+        var dice = snapshot.hasData ? snapshot.data.value : {};
+
+        print('got error $dice $args');
+        return Scaffold(
+          appBar: AppBar(
+            title: GestureDetector(
+              child: Text(dice['title'] ?? 'Add new Dice'),
+              onTap: () async {
+                await formSheet(
+                    context: context,
+                    defaultValue: dice['title'] ?? '',
+                    placeholderText: 'type new dice name...',
+                    titleName: "Dice name",
+                    shouldCloseAfterAdd: true,
+                    onEnter: (text) async {
+                      if (dice['title'] != null) {
+                        await DiceDao()
+                            .updateDice(Dice(title: '$text', id: dice['id']));
+                        setState(() {});
+                      } else {
+                        String newId =
+                            await DiceDao().insertDice(Dice(title: '$text'));
+                        setState(() {
+                          updatedDice = {'id': newId};
+                        });
+                      }
+                    });
+              },
+            ),
+            actions: <Widget>[
+              Visibility(
+                visible: dice['title'] != null,
+                maintainState: true,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                  onPressed: () async {
                     await formSheet(
                         context: context,
-                        defaultValue: snapshot.data.length > 0
-                            ? snapshot.data[0]['title']
-                            : '',
-                        titleName: "Add new card",
-                        shouldCloseAfterAdd: true,
+                        defaultValue: null,
+                        titleName: "Add Choice",
+                        shouldCloseAfterAdd: false,
                         onEnter: (text) async {
-                          if (snapshot.data.isEmpty) {
-                            await db.addPick(Pick(title: '$text'));
-                          } else {
-                            await db.updatePick(Pick(
-                                title: '$text', id: snapshot.data[0]['id']));
-                          }
-
+                          await DiceDao()
+                              .insertChoice(args['id'], Choice(name: '$text'));
                           setState(() {});
                         });
                   },
-                );
-              }
-              return Text('Loading...');
-            }),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            onPressed: () async {
-              await formSheet(
-                  context: context,
-                  defaultValue: null,
-                  titleName: "Add Choice",
-                  shouldCloseAfterAdd: false,
-                  onEnter: (text) async {
-                    await db.addChoiceEntry(
-                        Choice(choice: '$text', pid: args['id']));
-                    setState(() {});
-                  });
-            },
+                ),
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.close,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
+              )
+            ],
           ),
-          IconButton(
-            icon: Icon(
-              Icons.close,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          )
-        ],
-      ),
-      body: Container(
-          child: StreamBuilder(
-              stream: db.watchPickWithChoices(args['id']),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return ChoicesList(
-                    data: snapshot.data,
-                  );
-                } else
-                  return Text('loading...');
-              })),
+          body: Container(
+              child: dice['choices'] == null
+                  ? BlankDice(
+                      onClick: () {},
+                    )
+                  : Builder(
+                      builder: (context) {
+                        return ChoicesList(
+                            id: dice['id'],
+                            data: dice['choices'],
+                            onRemove: (id, item) async {
+                              await DiceDao().deleteChoice(id, item['id']);
+                              notify(context, '${item['name']} deleted!!');
+                              setState(() {});
+                            });
+                      },
+                    )),
+        );
+      },
     );
   }
 }

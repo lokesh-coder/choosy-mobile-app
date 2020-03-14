@@ -1,16 +1,15 @@
 import "dart:math";
-import 'package:coolflutterapp/db/choosy.db.dart';
+import 'package:coolflutterapp/dao/dice.dao.dart';
+import 'package:coolflutterapp/models/dice.model.dart';
 import 'package:coolflutterapp/utils/settings.dart';
 import 'package:coolflutterapp/widgets/board.dart';
-import 'package:coolflutterapp/widgets/timer.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_shake_plugin/flutter_shake_plugin.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sembast/sembast.dart';
 
 class PlayScreen extends StatefulWidget {
-  Settings settings = Settings();
-  Random random = new Random();
+  final Settings settings = Settings();
+  final Random random = new Random();
   PlayScreen({Key key}) : super(key: key);
 
   @override
@@ -18,10 +17,10 @@ class PlayScreen extends StatefulWidget {
 }
 
 class _PlayScreenState extends State<PlayScreen> {
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   FlutterShakePlugin _shakePlugin;
   List items = [];
   String selecedItem = '';
+  Map args;
 
   @override
   void initState() {
@@ -30,16 +29,16 @@ class _PlayScreenState extends State<PlayScreen> {
       shakeThresholdGravity: 30.0,
       vibrateDuration: 100,
       onPhoneShaken: () {
-        if (items.isEmpty) return;
-        String pickname = items[0]['id'].toString();
-
         (() async {
-          List<String> playedPick =
-              await widget.settings.getPlayedPick(pickname);
+          RecordSnapshot record = await DiceDao().getADice(args['id']);
+          Dice dice = Dice.fromJson(record.value);
 
-          if (playedPick == null) {
-            selecedItem = items[widget.random.nextInt(items.length)]['choice'];
-            await widget.settings.savePlayedPick(pickname, selecedItem);
+          bool hasAlreadyPlayed = dice.lastPlayedTime != null;
+
+          if (!hasAlreadyPlayed) {
+            var randomChoiceIndex = widget.random.nextInt(dice.choices.length);
+            await DiceDao()
+                .pickAChoice(dice.id, dice.choices[randomChoiceIndex].id);
             setState(() {});
           }
         })();
@@ -55,37 +54,52 @@ class _PlayScreenState extends State<PlayScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final ChoosyDatabase db = Provider.of<ChoosyDatabase>(context);
-    final dynamic args = ModalRoute.of(context).settings.arguments;
+    args = ModalRoute.of(context).settings.arguments;
 
     return FutureBuilder(
-        future: db.getPickWithChoices(args['id']),
+        future: DiceDao().getADice(args['id']),
         builder: (context, snapshot) {
           if (!snapshot.hasData) return Text('loading...');
-          items = snapshot.data;
+          Dice dice = Dice.fromJson(snapshot.data.value);
+          bool hasAlreadyPlayed = dice.lastPlayedTime != null;
+
+          print('=== ${dice.toJson()}');
+
           return Scaffold(
               appBar: AppBar(
-                title:
-                    Text(items.length > 0 ? items[0]['title'] : 'no choices'),
+                title: Text(dice.title),
               ),
-              body: FutureBuilder(
-                builder: (ctx, AsyncSnapshot<SharedPreferences> sh) {
-                  var selected, pickname;
-                  if (sh.hasData && items.length > 0) {
-                    pickname = items[0]['id'].toString();
-                    selected = sh.data.getStringList('pick-$pickname');
-                  }
+              body: Column(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Text('set choice'),
+                    onTap: () async {
+                      if (hasAlreadyPlayed) return;
+                      var randomChoiceIndex =
+                          widget.random.nextInt(dice.choices.length);
+                      await DiceDao().pickAChoice(
+                          dice.id, dice.choices[randomChoiceIndex].id);
 
-                  return Center(
+                      setState(() {});
+                    },
+                  ),
+                  Center(
                       child: PickBoard(
-                    choices: snapshot.data,
-                    selection: selected,
-                    onDone: () => setState(() {
-                      widget.settings.removePlayedPick(pickname);
-                    }),
-                  ));
-                },
-                future: _prefs,
+                    choices: dice.choices,
+                    selection: hasAlreadyPlayed
+                        ? [
+                            dice.choices
+                                .firstWhere((c) => c.isPicked == true)
+                                .name,
+                            dice.lastPlayedTime
+                          ]
+                        : null,
+                    onDone: () async {
+                      await DiceDao().pickAChoice(dice.id);
+                      setState(() {});
+                    },
+                  )),
+                ],
               ));
         });
   }

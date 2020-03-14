@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class NextPickTimer extends StatefulWidget {
-  DateTime time;
-  Function onDone;
-  int refreshRateInSec = 1;
+  final DateTime time;
+  final Function onDone;
+  final int refreshRateInSec = 1;
   NextPickTimer({Key key, this.time, this.onDone}) : super(key: key);
 
   @override

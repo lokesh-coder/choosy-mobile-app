@@ -25,6 +25,10 @@ dependencies:
   provider: ^3.0.0+1
   path_provider: ^1.3.0
   flutter_shake_plugin:
+  uuid: ^2.0.4
+
+  sembast:
+  equatable:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
