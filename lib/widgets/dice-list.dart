@@ -14,6 +14,7 @@ class _DiceListState extends State<DiceList> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       child: FutureBuilder(
           future: DiceDao().getAllDices(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -24,8 +25,10 @@ class _DiceListState extends State<DiceList> {
                   itemBuilder: (BuildContext ctxt, int index) {
                     return DiceItem(
                         dice: snapshot.data[index],
+                        onTimeOut: () {
+                          setState(() {});
+                        },
                         onDelete: (name) {
-                          print('$name deleted!');
                           notify(context, '$name deleted!!');
                           setState(() {});
                         });

@@ -23,7 +23,10 @@ class DiceEmptyStateScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Illustration('intro'),
-            Headlines(),
+            Headlines(
+              'Don’t think too much!',
+              'Create a list and pick a random item',
+            ),
             SizedBox(
               height: 10,
             ),
@@ -39,7 +42,6 @@ class DiceEmptyStateScreen extends StatelessWidget {
                     onEnter: (text) async {
                       String id =
                           await DiceDao().insertDice(Dice(title: '$text'));
-                      print('=== $id');
 
                       Navigator.pushNamed(context, '/editor',
                           arguments: {'id': id});

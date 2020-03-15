@@ -14,8 +14,6 @@ class PickBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     var displayWidget;
 
-    print('ccccc $selection');
-
     if (choices.length < 2) {
       displayWidget = Text('Need at least two items to play ');
     } else if (selection == null) {
@@ -26,10 +24,7 @@ class PickBoard extends StatelessWidget {
         children: [
           Text('${selection[0]} was already choosen'),
           NextPickTimer(
-            time: DateTime.parse(
-                    DateTime.fromMillisecondsSinceEpoch(selection[1])
-                        .toString())
-                .add(Duration(minutes: 1)),
+            timeInMs: selection[1],
             onDone: onDone,
           )
         ],

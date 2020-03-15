@@ -8,7 +8,6 @@ import 'package:coolflutterapp/utils/sheet.dart';
 import 'package:coolflutterapp/widgets/blank-dice.dart';
 import 'package:coolflutterapp/widgets/choiceslist.dart';
 import 'package:coolflutterapp/widgets/editable-heading.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class Editor extends StatefulWidget {
@@ -33,7 +32,6 @@ class _EditorState extends State<Editor> {
       builder: (ctx, snapshot) {
         var dice = snapshot.hasData ? snapshot.data.value : {};
         bool hasChoices = dice['choices'] != null && dice['choices'].length > 0;
-        print('got error $dice $args');
         return Scaffold(
           appBar: AppBar(
             elevation: 0,

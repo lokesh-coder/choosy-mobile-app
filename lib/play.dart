@@ -1,8 +1,12 @@
 import "dart:math";
+import 'package:coolflutterapp/config/colors.dart';
+import 'package:coolflutterapp/config/icons.dart';
 import 'package:coolflutterapp/dao/dice.dao.dart';
 import 'package:coolflutterapp/models/dice.model.dart';
+import 'package:coolflutterapp/screens/board-result.dart';
 import 'package:coolflutterapp/utils/settings.dart';
 import 'package:coolflutterapp/widgets/board.dart';
+import 'package:coolflutterapp/widgets/illustration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shake_plugin/flutter_shake_plugin.dart';
 import 'package:sembast/sembast.dart';
@@ -63,44 +67,59 @@ class _PlayScreenState extends State<PlayScreen> {
           Dice dice = Dice.fromJson(snapshot.data.value);
           bool hasAlreadyPlayed = dice.lastPlayedTime != null;
 
-          print('=== ${dice.toJson()}');
-
-          return Scaffold(
-              appBar: AppBar(
-                title: Text(dice.title),
-              ),
-              body: Column(
-                children: <Widget>[
-                  GestureDetector(
-                    child: Text('set choice'),
-                    onTap: () async {
-                      if (hasAlreadyPlayed) return;
-                      var randomChoiceIndex =
-                          widget.random.nextInt(dice.choices.length);
-                      await DiceDao().pickAChoice(
-                          dice.id, dice.choices[randomChoiceIndex].id);
-
-                      setState(() {});
+          if (!hasAlreadyPlayed)
+            return Scaffold(
+                appBar: AppBar(
+                  backgroundColor: choosyColors['bg'],
+                  elevation: 0,
+                  leading: IconButton(
+                    icon: Icon(
+                      ChoosyIcon.arrow_left_line,
+                      color: choosyColors['text'],
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
                     },
                   ),
-                  Center(
-                      child: PickBoard(
-                    choices: dice.choices,
-                    selection: hasAlreadyPlayed
-                        ? [
-                            dice.choices
-                                .firstWhere((c) => c.isPicked == true)
-                                .name,
-                            dice.lastPlayedTime
-                          ]
-                        : null,
-                    onDone: () async {
-                      await DiceDao().pickAChoice(dice.id);
-                      setState(() {});
-                    },
-                  )),
-                ],
-              ));
+                ),
+                body: Column(
+                  children: <Widget>[
+                    Illustration('shake'),
+                    GestureDetector(
+                      child: Text('set choice'),
+                      onTap: () async {
+                        if (hasAlreadyPlayed) return;
+                        var randomChoiceIndex =
+                            widget.random.nextInt(dice.choices.length);
+                        await DiceDao().pickAChoice(
+                            dice.id, dice.choices[randomChoiceIndex].id);
+
+                        setState(() {});
+                      },
+                    ),
+                    Center(
+                        child: PickBoard(
+                      choices: dice.choices,
+                      selection: hasAlreadyPlayed
+                          ? [
+                              dice.choices
+                                  .firstWhere((c) => c.isPicked == true)
+                                  .name,
+                              dice.lastPlayedTime
+                            ]
+                          : null,
+                      onDone: () async {
+                        await DiceDao().pickAChoice(dice.id);
+                        setState(() {});
+                      },
+                    )),
+                  ],
+                ));
+
+          return BoardResultScreen(dice, onTimeOut: () async {
+            await DiceDao().pickAChoice(dice.id);
+            setState(() {});
+          });
         });
   }
 }

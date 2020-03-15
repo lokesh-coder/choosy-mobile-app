@@ -17,7 +17,6 @@ class Dice {
       this.choices});
 
   factory Dice.fromJson(Map<String, dynamic> json) {
-    // print('rr $json');
     return Dice(
       id: json["id"],
       title: json["title"],

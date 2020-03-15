@@ -22,7 +22,6 @@ class DiceDao {
     diceJson['id'] = Uuid().v1();
     diceJson['createdTime'] = DateTime.now().millisecondsSinceEpoch;
     await _table.add(await _db, diceJson);
-    print('Dice Inserted successfully !!');
     return diceJson['id'];
   }
 
@@ -64,7 +63,6 @@ class DiceDao {
     choiceJson['id'] = Uuid().v1();
     diceObj.choices.add(Choice.fromJson(choiceJson));
     await updateDice(diceObj);
-    print('Dice updated successfully !!');
   }
 
   Future pickAChoice(String diceId, [String choiceId]) async {

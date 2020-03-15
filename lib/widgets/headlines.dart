@@ -2,7 +2,10 @@ import 'package:coolflutterapp/config/colors.dart';
 import 'package:flutter/material.dart';
 
 class Headlines extends StatelessWidget {
-  const Headlines({Key key}) : super(key: key);
+  final String heading;
+  final String subheading;
+
+  const Headlines(this.heading, this.subheading);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +14,7 @@ class Headlines extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            'Don’t think too much!',
+            heading,
             style: TextStyle(
                 color: choosyColors['heading'],
                 fontFamily: 'Gilroy',
@@ -19,7 +22,7 @@ class Headlines extends StatelessWidget {
                 fontWeight: FontWeight.w900),
           ),
           Text(
-            'Create a list and pick a random item',
+            subheading,
             style: TextStyle(fontSize: 14, color: choosyColors['text']),
           )
         ],

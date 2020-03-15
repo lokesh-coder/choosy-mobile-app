@@ -1,4 +1,5 @@
 import 'package:coolflutterapp/widgets/dice-list.dart';
+import 'package:coolflutterapp/widgets/welcome-heading.dart';
 import 'package:flutter/material.dart';
 
 class DicesScreen extends StatelessWidget {
@@ -33,7 +34,13 @@ class DicesScreen extends StatelessWidget {
           )
         ],
       ),
-      body: DiceList(), // pass dices to avoid db query
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          WelcomeHeading(),
+          Expanded(child: DiceList()),
+        ],
+      ), // pass dices to avoid db query
     );
   }
 }

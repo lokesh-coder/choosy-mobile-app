@@ -29,6 +29,7 @@ class ChoosyIcon {
   static const IconData delete_bin_5_line = IconData(0xec02, fontFamily: _kFontFam);
   static const IconData edit_line = IconData(0xec52, fontFamily: _kFontFam);
   static const IconData emotion_happy_line = IconData(0xec59, fontFamily: _kFontFam);
+  static const IconData more_fill = IconData(0xeefe, fontFamily: _kFontFam);
   static const IconData send_plane_2_fill = IconData(0xf03a, fontFamily: _kFontFam);
   static const IconData settings_3_line = IconData(0xf048, fontFamily: _kFontFam);
   static const IconData sound_module_fill = IconData(0xf0b3, fontFamily: _kFontFam);
