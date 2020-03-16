@@ -1,16 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class NextPickTimer extends StatefulWidget {
   final int timeInMs;
   final Function onDone;
   final Function onRun;
   final int refreshRateInSec = 200;
   DateTime time;
+
   NextPickTimer({this.timeInMs, this.onDone, this.onRun}) {
-    time =
-        DateTime.parse(DateTime.fromMillisecondsSinceEpoch(timeInMs).toString())
-            .add(Duration(minutes: 1));
+    var lastPlayedDateTime = DateTime.fromMillisecondsSinceEpoch(timeInMs);
+    var duration = Duration(minutes: 1);
+    time = DateTime.parse(lastPlayedDateTime.toString()).add(duration);
   }
 
   String getDiplayiTime(Duration duration) {
@@ -38,7 +40,7 @@ class _NextPickTimerState extends State<NextPickTimer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(remainingTime != null ? '$remainingTime' : '...'),
+      child: Text(remainingTime != null ? '$remainingTime' : ''),
     );
   }
 
@@ -59,6 +61,7 @@ class _NextPickTimerState extends State<NextPickTimer> {
     if (diff <= 0) {
       timer.cancel();
       remainingTime = null;
+      print('TIMER STOPPED!');
       widget.onDone();
     }
     setState(() {});

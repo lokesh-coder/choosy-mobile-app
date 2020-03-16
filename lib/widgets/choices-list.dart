@@ -1,9 +1,10 @@
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/config/icons.dart';
+import 'package:coolflutterapp/source/models/choice.model.dart';
 import 'package:flutter/material.dart';
 
 class ChoicesList extends StatelessWidget {
-  final List data;
+  final List<Choice> data;
   final String id;
   final Function onRemove;
 
@@ -35,7 +36,7 @@ class ChoicesList extends StatelessWidget {
                   ),
                 ),
                 title: Text(
-                  data[index]['name'],
+                  data[index].name,
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: choosyColors['heading']),

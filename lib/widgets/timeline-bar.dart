@@ -1,5 +1,5 @@
 import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/models/dice.model.dart';
+import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:coolflutterapp/widgets/timer.dart';
 import 'package:flutter/material.dart';
 
@@ -32,8 +32,6 @@ class _TimelineBarState extends State<TimelineBar> {
     double totalBarWidth = MediaQuery.of(context).size.width / 1.5;
 
     double currentwidth = calcProgress(totalBarWidth, remainingSec, totalSec);
-    // print(
-    //     'remainingSec =====  $remainingSec, currentwidth ======= $currentwidth');
 
     return Container(
       child: Column(

@@ -1,44 +1,38 @@
-import 'package:coolflutterapp/dao/dice.dao.dart';
+import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/utils/notify.dart';
 import 'package:coolflutterapp/widgets/dice-item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DiceList extends StatefulWidget {
+class DiceList extends StatelessWidget {
   const DiceList({Key key}) : super(key: key);
 
   @override
-  _DiceListState createState() => _DiceListState();
-}
-
-class _DiceListState extends State<DiceList> {
-  @override
   Widget build(BuildContext context) {
+    print('widget: dicelist');
     return Container(
       color: Colors.white,
-      child: FutureBuilder(
-          future: DiceDao().getAllDices(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasData) {
-              return Container(
-                child: ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext ctxt, int index) {
-                    return DiceItem(
-                        dice: snapshot.data[index],
-                        onTimeOut: () {
-                          setState(() {});
-                        },
-                        onDelete: (name) {
-                          notify(context, '$name deleted!!');
-                          setState(() {});
-                        });
+      child: Consumer<DicesModel>(
+          builder: (context, DicesModel dicesModel, child) {
+        return Container(
+          child: ListView.builder(
+            itemCount: dicesModel.dices.length,
+            addAutomaticKeepAlives: true,
+            physics: BouncingScrollPhysics(),
+            itemBuilder: (BuildContext ctxt, int index) {
+              return DiceItem(
+                  key: Key('$index'),
+                  dice: dicesModel.dices[index],
+                  onTimeOut: () {
+                    dicesModel.clearLastPlayedTime(dicesModel.dices[index].id);
                   },
-                ),
-              );
-            } else {
-              return Text('loading...');
-            }
-          }),
+                  onDelete: (name) {
+                    notify(context, '$name deleted!!');
+                  });
+            },
+          ),
+        );
+      }),
     );
   }
 }

@@ -1,17 +1,17 @@
 import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/dao/dice.dao.dart';
-import 'package:coolflutterapp/models/dice.model.dart';
+import 'package:coolflutterapp/pages/editor.page.dart';
+import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/utils/sheet.dart';
 import 'package:coolflutterapp/widgets/button.dart';
 import 'package:coolflutterapp/widgets/headlines.dart';
 import 'package:coolflutterapp/widgets/illustration.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DiceEmptyStateScreen extends StatelessWidget {
-  const DiceEmptyStateScreen({Key key}) : super(key: key);
-
+class HomeEmptyStateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var dicesModel = Provider.of<DicesModel>(context, listen: false);
     return Scaffold(
       body: Container(
         color: choosyColors['bg'],
@@ -40,11 +40,11 @@ class DiceEmptyStateScreen extends StatelessWidget {
                     titleName: "Dice name",
                     shouldCloseAfterAdd: true,
                     onEnter: (text) async {
-                      String id =
-                          await DiceDao().insertDice(Dice(title: '$text'));
-
-                      Navigator.pushNamed(context, '/editor',
-                          arguments: {'id': id});
+                      dicesModel.activeDiceID = null;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EditorPage()),
+                      );
                     });
               },
             )

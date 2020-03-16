@@ -1,10 +1,9 @@
-import 'package:coolflutterapp/models/choice.model.dart';
-import 'package:coolflutterapp/models/dice.model.dart';
+import 'package:coolflutterapp/source/db.setup.dart';
+import 'package:coolflutterapp/source/models/choice.model.dart';
+import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/utils/value_utils.dart';
 import 'package:uuid/uuid.dart';
-
-import '../db/setup.dart';
 
 class DiceDao {
   static const String folderName = "Dices";
@@ -54,6 +53,7 @@ class DiceDao {
   }
 
   Future insertChoice(String id, Choice choice) async {
+    print('==> $id $choice');
     final finder = Finder(filter: Filter.equals('id', id));
     RecordSnapshot<int, Map<String, dynamic>> result =
         await _table.findFirst(await _db, finder: finder);
@@ -68,7 +68,7 @@ class DiceDao {
   Future pickAChoice(String diceId, [String choiceId]) async {
     RecordSnapshot record = await getADice(diceId);
     Map dice = cloneValue(record.value);
-    List choices = List.from(dice['choices']);
+    List choices = List.from(dice['choices'] ?? []);
     choices = choices.map((f) {
       if (f['id'] == choiceId) {
         f['isPicked'] = true;

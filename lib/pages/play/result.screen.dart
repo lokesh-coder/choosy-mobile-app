@@ -1,13 +1,13 @@
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/config/icons.dart';
-import 'package:coolflutterapp/models/dice.model.dart';
-import 'package:coolflutterapp/widgets/timelinebar.dart';
+import 'package:coolflutterapp/source/models/dice.model.dart';
+import 'package:coolflutterapp/widgets/timeline-bar.dart';
 import 'package:flutter/material.dart';
 
-class BoardResultScreen extends StatelessWidget {
+class ResultScreen extends StatelessWidget {
   final Dice dice;
   final Function onTimeOut;
-  const BoardResultScreen(this.dice, {this.onTimeOut});
+  const ResultScreen(this.dice, {this.onTimeOut});
 
   @override
   Widget build(BuildContext context) {

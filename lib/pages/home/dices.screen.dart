@@ -1,12 +1,14 @@
+import 'package:coolflutterapp/pages/editor.page.dart';
+import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/widgets/dice-list.dart';
 import 'package:coolflutterapp/widgets/welcome-heading.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DicesScreen extends StatelessWidget {
-  const DicesScreen({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    var dicesModel = Provider.of<DicesModel>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -22,7 +24,11 @@ class DicesScreen extends StatelessWidget {
               color: Colors.grey,
             ),
             onPressed: () {
-              Navigator.pushNamed(context, '/editor', arguments: {'id': null});
+              dicesModel.activeDiceID = null;
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditorPage()),
+              );
             },
           ),
           IconButton(

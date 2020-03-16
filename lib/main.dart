@@ -1,8 +1,7 @@
-import 'package:coolflutterapp/editor.dart';
-import 'package:coolflutterapp/play.dart';
-import 'package:coolflutterapp/screens/home.dart';
-import 'package:coolflutterapp/widgets/dice-list.dart';
+import 'package:coolflutterapp/pages/home.page.dart';
+import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(ChoosyApp());
@@ -11,57 +10,19 @@ void main() {
 class ChoosyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Manrope',
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (ctx) => HomeScreen(),
-        '/editor': (ctx) => Editor(),
-        '/play': (ctx) => PlayScreen(),
-      },
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  Home({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Choosy',
-          style: TextStyle(color: Colors.black),
+    return ChangeNotifierProvider<DicesModel>(
+      create: (context) => DicesModel(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'Manrope',
         ),
-        backgroundColor: Color(0xFFFFFFFF),
-        elevation: 0,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.playlist_add,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/editor', arguments: {'id': null});
-            },
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.grey,
-            ),
-            onPressed: () {},
-          )
-        ],
+        initialRoute: '/',
+        routes: {
+          '/': (ctx) => HomePage(),
+        },
       ),
-      body: DiceList(),
     );
   }
 }
