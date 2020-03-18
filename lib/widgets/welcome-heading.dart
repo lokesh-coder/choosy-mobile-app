@@ -2,23 +2,18 @@ import 'package:coolflutterapp/config/colors.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeHeading extends StatelessWidget {
-  const WelcomeHeading({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      color: choosyColors['bg'],
+      padding: EdgeInsets.only(
+        left: 20,
+        top: 40,
+        right: 20,
+      ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Text("Hello",
-              style: TextStyle(
-                fontFamily: 'Gilroy',
-                fontWeight: FontWeight.w900,
-                color: choosyColors['heading'],
-                fontSize: 30,
-              )),
           Text(
             "Pick a card and start spinning",
             style: TextStyle(

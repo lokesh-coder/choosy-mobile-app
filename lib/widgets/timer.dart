@@ -7,9 +7,10 @@ class NextPickTimer extends StatefulWidget {
   final Function onDone;
   final Function onRun;
   final int refreshRateInSec = 200;
+  TextStyle labelStyles = TextStyle();
   DateTime time;
 
-  NextPickTimer({this.timeInMs, this.onDone, this.onRun}) {
+  NextPickTimer({this.timeInMs, this.onDone, this.onRun, this.labelStyles}) {
     var lastPlayedDateTime = DateTime.fromMillisecondsSinceEpoch(timeInMs);
     var duration = Duration(minutes: 1);
     time = DateTime.parse(lastPlayedDateTime.toString()).add(duration);
@@ -40,7 +41,10 @@ class _NextPickTimerState extends State<NextPickTimer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(remainingTime != null ? '$remainingTime' : ''),
+      child: Text(
+        remainingTime != null ? '$remainingTime' : '',
+        style: widget.labelStyles,
+      ),
     );
   }
 

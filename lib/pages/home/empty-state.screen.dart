@@ -1,28 +1,36 @@
 import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/pages/editor.page.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/utils/sheet.dart';
+import 'package:coolflutterapp/widgets/app-shell.dart';
 import 'package:coolflutterapp/widgets/button.dart';
+import 'package:coolflutterapp/widgets/header.dart';
 import 'package:coolflutterapp/widgets/headlines.dart';
 import 'package:coolflutterapp/widgets/illustration.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomeEmptyStateScreen extends StatelessWidget {
+  final Function onNewDice;
+
+  HomeEmptyStateScreen({this.onNewDice});
+
   @override
   Widget build(BuildContext context) {
-    var dicesModel = Provider.of<DicesModel>(context, listen: false);
-    return Scaffold(
-      body: Container(
-        color: choosyColors['bg'],
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        // margin: MediaQuery.of(context).padding,
+    return AppShell(
+      header: Header(
+        title: 'choosy',
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: choosyColors['bg'],
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Illustration('intro'),
+            Opacity(
+              child: Illustration('intro'),
+              opacity: 0.5,
+            ),
             Headlines(
               'Don’t think too much!',
               'Create a list and pick a random item',
@@ -32,21 +40,7 @@ class HomeEmptyStateScreen extends StatelessWidget {
             ),
             Button(
               'create a list',
-              onTap: () async {
-                await formSheet(
-                    context: context,
-                    defaultValue: '',
-                    placeholderText: 'type new dice name...',
-                    titleName: "Dice name",
-                    shouldCloseAfterAdd: true,
-                    onEnter: (text) async {
-                      dicesModel.activeDiceID = null;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => EditorPage()),
-                      );
-                    });
-              },
+              onTap: onNewDice,
             )
           ],
         ),

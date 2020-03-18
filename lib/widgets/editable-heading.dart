@@ -1,6 +1,4 @@
-import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/utils/sheet.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class EditableHeading extends StatelessWidget {
@@ -12,21 +10,15 @@ class EditableHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        color: choosyColors['tile'],
-        padding: EdgeInsets.all(20.0),
-        child: Align(
-          alignment: Alignment.center,
-          child: DottedBorder(
-            dashPattern: [6, 3],
-            color: choosyColors['text'],
-            padding: EdgeInsets.all(10),
-            child: Text(heading ?? 'Whats for lunch?',
-                softWrap: true,
-                style: TextStyle(
-                    // fontFamily: 'Gilroy',
-                    fontWeight: FontWeight.w900,
-                    fontSize: 25,
-                    color: choosyColors['heading'].withOpacity(0.3))),
+        // color: choosyColors['tile'],
+        child: Text(
+          heading ?? 'Whats for lunch?',
+          softWrap: true,
+          style: TextStyle(
+            // fontFamily: 'Gilroy',
+            fontWeight: FontWeight.w900,
+            fontSize: 20,
+            color: Colors.white.withOpacity(0.8),
           ),
         ),
       ),
@@ -36,7 +28,6 @@ class EditableHeading extends StatelessWidget {
             defaultValue: heading ?? '',
             placeholderText: 'type new dice name...',
             titleName: "Dice name",
-            shouldCloseAfterAdd: true,
             onEnter: onEnter);
       },
     );

@@ -7,13 +7,13 @@ formSheet(
     String titleName,
     String defaultValue,
     String placeholderText = '',
-    void Function(String text) onEnter,
-    bool shouldCloseAfterAdd = false}) {
+    void Function(String text) onEnter}) {
   final inpController = TextEditingController();
   var inpText = '';
   return showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
+      backgroundColor: Colors.transparent,
       shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(10.0)),
       builder: (BuildContext context) {
@@ -22,7 +22,11 @@ formSheet(
           TextPosition(offset: inpController.text.length),
         );
         return Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(20))),
           padding: const EdgeInsets.all(30.0),
+          margin: const EdgeInsets.all(10.0),
           child: Container(
             child: Padding(
               padding: EdgeInsets.only(
@@ -30,11 +34,26 @@ formSheet(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text(
-                    titleName,
-                    style: TextStyle(
-                      color: Theme.of(context).accentColor,
-                      fontSize: 24.0,
+                  Container(
+                    padding: EdgeInsets.only(bottom: 20),
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.add,
+                          color: Color(0xFFAD548E),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          titleName,
+                          style: TextStyle(
+                              color: choosyColors['heading'],
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
                     ),
                   ),
                   Row(
@@ -75,10 +94,9 @@ formSheet(
                               onEnter,
                               inpText,
                             );
-                            if (shouldCloseAfterAdd) Navigator.pop(context);
                           })
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -92,6 +110,9 @@ void _onFormSubmit(
   void onEnter(String text),
   String inpText,
 ) {
+  if (inpText.trim().length == 0) {
+    return;
+  }
   inpController.clear();
   onEnter(inpText);
   inpText = '';

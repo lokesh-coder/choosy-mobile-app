@@ -25,7 +25,7 @@ class DiceItem extends StatelessWidget {
     Choice chosenItem =
         dice.choices.firstWhere((d) => d.isPicked == true, orElse: () => null);
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+      margin: EdgeInsets.only(bottom: 10, left: 20, right: 20),
       child: GestureDetector(
         child: Card(
           elevation: 0,
@@ -34,7 +34,7 @@ class DiceItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Container(
-            color: choosyColors['tile'],
+            color: Colors.white,
             padding: EdgeInsets.all(20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -63,8 +63,10 @@ class DiceItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     IconButton(
+                        alignment: Alignment.topLeft,
                         icon: Icon(
                           ChoosyIcon.more_fill,
+                          color: choosyColors['heading'].withOpacity(0.5),
                         ),
                         onPressed: () {
                           actionMenu(

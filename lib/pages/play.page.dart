@@ -1,4 +1,5 @@
 import "dart:math";
+import 'package:coolflutterapp/pages/editor.page.dart';
 import 'package:coolflutterapp/pages/play/board.screen.dart';
 import 'package:coolflutterapp/pages/play/error.screen.dart';
 import 'package:coolflutterapp/pages/play/result.screen.dart';
@@ -26,7 +27,15 @@ class PlayPage extends StatelessWidget {
         dicesModel.setPlayedTime(dice.id, dice.choices[randomChoiceIndex].id);
       };
 
-      if (!hasChoices) return ErrorScreen();
+      var goToEditor = () {
+        dicesModel.activeDiceID = dice.id;
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EditorPage()),
+        );
+      };
+
+      if (!hasChoices) return ErrorScreen(goToEditor);
 
       if (!hasAlreadyPlayed)
         return BoardScreen(

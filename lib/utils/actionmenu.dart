@@ -9,8 +9,10 @@ actionMenu({
 }) {
   return showModalBottomSheet<void>(
       context: context,
-      shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0)),
+      backgroundColor: Colors.transparent,
+      // shape: new RoundedRectangleBorder(
+      //   borderRadius: new BorderRadius.circular(10.0),
+      // ),
       builder: (BuildContext context) {
         return ActionMenu(
           onDelete: onDelete,

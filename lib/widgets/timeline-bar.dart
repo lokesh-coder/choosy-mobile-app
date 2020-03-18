@@ -40,9 +40,9 @@ class _TimelineBarState extends State<TimelineBar> {
             children: <Widget>[
               Container(
                 width: totalBarWidth,
-                height: 10,
+                height: 6,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.3),
+                  color: choosyColors['heading'].withOpacity(0.2),
                   borderRadius: BorderRadius.all(Radius.circular(50)),
                 ),
                 child: SizedBox(
@@ -52,9 +52,9 @@ class _TimelineBarState extends State<TimelineBar> {
               AnimatedContainer(
                 width: totalBarWidth - currentwidth,
                 duration: Duration(seconds: 1),
-                height: 10,
+                height: 6,
                 decoration: BoxDecoration(
-                  color: choosyColors['info'],
+                  color: choosyColors['primary'],
                   borderRadius: BorderRadius.all(Radius.circular(50)),
                 ),
                 child: SizedBox(
@@ -63,9 +63,14 @@ class _TimelineBarState extends State<TimelineBar> {
               )
             ],
           ),
+          SizedBox(
+            height: 10,
+          ),
           NextPickTimer(
             timeInMs: widget.dice.lastPlayedTime,
             onDone: widget.onTimeOut,
+            labelStyles:
+                TextStyle(color: choosyColors['heading'].withOpacity(0.7)),
             onRun: (rem) {
               setState(() {
                 remainingSec = rem;

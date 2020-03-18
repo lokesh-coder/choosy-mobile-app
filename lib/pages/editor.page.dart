@@ -11,7 +11,6 @@ class EditorPage extends StatelessWidget {
         context: context,
         defaultValue: null,
         titleName: "Add Choice",
-        shouldCloseAfterAdd: false,
         onEnter: (choiceName) {
           dicesModel.insertChoice(diceID, choiceName);
         });

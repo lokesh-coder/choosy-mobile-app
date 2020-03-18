@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/utils/notify.dart';
 import 'package:coolflutterapp/widgets/dice-item.dart';
@@ -11,7 +12,7 @@ class DiceList extends StatelessWidget {
   Widget build(BuildContext context) {
     print('widget: dicelist');
     return Container(
-      color: Colors.white,
+      color: choosyColors['bg'],
       child: Consumer<DicesModel>(
           builder: (context, DicesModel dicesModel, child) {
         return Container(
