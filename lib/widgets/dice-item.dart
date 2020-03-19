@@ -60,32 +60,37 @@ class DiceItem extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    IconButton(
-                        alignment: Alignment.topLeft,
-                        icon: Icon(
-                          ChoosyIcon.more_fill,
-                          color: choosyColors['heading'].withOpacity(0.5),
-                        ),
-                        onPressed: () {
-                          actionMenu(
-                              context: context,
-                              onDelete: () async {
-                                await dicesModel.deleteDice(dice.id);
-                                onDelete(dice.title);
-                                Navigator.pop(context);
-                              },
-                              onEdit: () {
-                                dicesModel.activeDiceID = dice.id;
-                                Navigator.pop(context);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => EditorPage()),
-                                );
-                              });
-                        }),
+                    Container(
+                      padding: EdgeInsets.all(0),
+                      child: IconButton(
+                          // padding: EdgeInsets.all(0),
+                          alignment: Alignment.topRight,
+                          icon: Icon(
+                            Icons.more_horiz,
+                            color: choosyColors['heading'].withOpacity(0.5),
+                          ),
+                          onPressed: () {
+                            actionMenu(
+                                context: context,
+                                onDelete: () async {
+                                  await dicesModel.deleteDice(dice.id);
+                                  onDelete(dice.title);
+                                  Navigator.pop(context);
+                                },
+                                onEdit: () {
+                                  dicesModel.activeDiceID = dice.id;
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => EditorPage()),
+                                  );
+                                });
+                          }),
+                    ),
                     if (dice.lastPlayedTime != null)
                       NextPickTimer(
                           onDone: onTimeOut, timeInMs: dice.lastPlayedTime),

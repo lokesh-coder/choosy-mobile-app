@@ -1,4 +1,5 @@
 import 'package:coolflutterapp/config/icons.dart';
+import 'package:coolflutterapp/utils/toast.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
@@ -32,7 +33,9 @@ class Header extends StatelessWidget {
             ChoosyIcon.settings_3_line,
             color: Colors.white.withOpacity(0.7),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Toast.success('hiya you are awesome');
+          },
         )
       ],
     );

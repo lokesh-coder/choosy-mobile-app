@@ -29,31 +29,32 @@ class ChoicesList extends StatelessWidget {
             child: Container(
               color: Colors.transparent,
               child: ListTile(
+                dense: true,
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                 title: Container(
-                  child: ShaderMask(
-                    shaderCallback: (Rect bounds) {
-                      return LinearGradient(
-                        colors: [Color(0xffAD548E), Color(0xffDF804A)],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        tileMode: TileMode.clamp,
-                      ).createShader(bounds);
-                    },
-                    child: Text(
-                      data[index].name,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18),
+                  child: Text(
+                    data[index].name,
+                    style: TextStyle(
+                      // color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      foreground: Paint()
+                        ..shader = LinearGradient(
+                          colors: <Color>[
+                            choosyColors['highlightBgStart'],
+                            choosyColors['highlightBgEnd'],
+                          ],
+                        ).createShader(
+                          new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+                        ),
                     ),
                   ),
                 ),
                 trailing: IconButton(
                   icon: Icon(
                     ChoosyIcon.close_circle_line,
-                    color: choosyColors['heading'].withOpacity(0.5),
+                    color: choosyColors['heading'].withOpacity(0.3),
                   ),
                   onPressed: () async {
                     onRemove(id, data[index]);

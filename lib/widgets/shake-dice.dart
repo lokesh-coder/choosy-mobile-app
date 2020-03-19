@@ -16,11 +16,9 @@ class _ShakeDiceState extends State<ShakeDice> {
     super.initState();
 
     shakePlugin = FlutterShakePlugin(
-      shakeThresholdGravity: 100.0,
+      shakeThresholdGravity: 5,
       vibrateDuration: 100,
-      onPhoneShaken: () {
-        widget.onPhoneShake();
-      },
+      onPhoneShaken: widget.onPhoneShake,
     )..startListening();
   }
 

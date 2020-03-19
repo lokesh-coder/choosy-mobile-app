@@ -16,7 +16,7 @@ class DicesScreen extends StatelessWidget {
         title: 'Cards ($totalDices)',
         action: IconButton(
           icon: Icon(
-            Icons.playlist_add,
+            Icons.add_circle_outline,
             color: Colors.white.withOpacity(0.7),
           ),
           onPressed: onNewDice,

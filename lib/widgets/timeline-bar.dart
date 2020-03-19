@@ -55,6 +55,12 @@ class _TimelineBarState extends State<TimelineBar> {
                 height: 6,
                 decoration: BoxDecoration(
                   color: choosyColors['primary'],
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      choosyColors['highlightBgStart'],
+                      choosyColors['highlightBgEnd'],
+                    ],
+                  ),
                   borderRadius: BorderRadius.all(Radius.circular(50)),
                 ),
                 child: SizedBox(
