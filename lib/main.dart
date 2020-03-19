@@ -18,6 +18,7 @@ class ChoosyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Choosy',
         debugShowCheckedModeBanner: false,
+        // showPerformanceOverlay: true,
         theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: 'Manrope',

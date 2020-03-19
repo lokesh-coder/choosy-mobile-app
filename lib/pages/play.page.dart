@@ -5,6 +5,7 @@ import 'package:coolflutterapp/pages/play/error.screen.dart';
 import 'package:coolflutterapp/pages/play/result.screen.dart';
 import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
+import 'package:coolflutterapp/utils/fade-transition.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,7 @@ class PlayPage extends StatelessWidget {
         dicesModel.activeDiceID = dice.id;
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EditorPage()),
+          FadeRoute(page: EditorPage()),
         );
       };
 

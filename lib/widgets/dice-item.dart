@@ -6,6 +6,7 @@ import 'package:coolflutterapp/source/models/choice.model.dart';
 import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/utils/actionmenu.dart';
+import 'package:coolflutterapp/utils/fade-transition.dart';
 import 'package:coolflutterapp/widgets/tag.dart';
 import 'package:coolflutterapp/widgets/timer.dart';
 import 'package:flutter/material.dart';
@@ -84,10 +85,7 @@ class DiceItem extends StatelessWidget {
                                   dicesModel.activeDiceID = dice.id;
                                   Navigator.pop(context);
                                   Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => EditorPage()),
-                                  );
+                                      context, FadeRoute(page: EditorPage()));
                                 });
                           }),
                     ),
@@ -105,8 +103,7 @@ class DiceItem extends StatelessWidget {
           dicesModel.activeDiceID = dice.id;
           Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => PlayPage(activeDiceID: dice.id)),
+            FadeRoute(page: PlayPage(activeDiceID: dice.id)),
           );
         },
       ),

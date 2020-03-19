@@ -1,7 +1,9 @@
 import 'package:coolflutterapp/pages/editor.page.dart';
 import 'package:coolflutterapp/pages/home/dices.screen.dart';
 import 'package:coolflutterapp/pages/home/empty-state.screen.dart';
+import 'package:coolflutterapp/pages/home/loading.screen.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
+import 'package:coolflutterapp/utils/fade-transition.dart';
 import 'package:coolflutterapp/utils/sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +18,10 @@ class HomePage extends StatelessWidget {
     return Consumer<DicesModel>(
         builder: (BuildContext context, DicesModel dicesModel, child) {
       int totalDices = dicesModel.getDices().length;
+
+      if (dicesModel.isLoading) {
+        return LoadingScreen();
+      }
 
       if (totalDices > 0) {
         return DicesScreen(
@@ -39,7 +45,7 @@ class HomePage extends StatelessWidget {
           Navigator.of(context).pop();
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => EditorPage()),
+            FadeRoute(page: EditorPage()),
           );
         });
   }

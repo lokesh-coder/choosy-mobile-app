@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 class DicesModel with ChangeNotifier {
   List<Dice> dices = [];
   String _activeDiceID;
+  bool isLoading = false;
 
   get activeDice {
     if (_activeDiceID == null) return Dice();
@@ -18,7 +19,9 @@ class DicesModel with ChangeNotifier {
   }
 
   fetchDices() async {
+    isLoading = true;
     List<Dice> dicesFromDB = await DiceDao().getAllDices();
+    isLoading = false;
     dices = dicesFromDB;
     notifyListeners();
   }
