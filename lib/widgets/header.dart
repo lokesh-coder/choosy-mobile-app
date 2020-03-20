@@ -1,5 +1,5 @@
-import 'package:coolflutterapp/config/icons.dart';
-import 'package:coolflutterapp/utils/toast.dart';
+import 'package:coolflutterapp/pages/about.dart';
+import 'package:coolflutterapp/utils/fade-transition.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
@@ -30,11 +30,11 @@ class Header extends StatelessWidget {
         if (action != null) action,
         IconButton(
           icon: Icon(
-            ChoosyIcon.settings_3_line,
+            Icons.info_outline,
             color: Colors.white.withOpacity(0.7),
           ),
           onPressed: () {
-            Toast.success('hiya you are awesome');
+            Navigator.push(context, FadeRoute(page: AboutPage()));
           },
         )
       ],

@@ -1,5 +1,4 @@
 import 'package:coolflutterapp/config/icons.dart';
-import 'package:coolflutterapp/pages/editor.page.dart';
 import 'package:coolflutterapp/widgets/app-shell.dart';
 import 'package:coolflutterapp/widgets/button.dart';
 import 'package:coolflutterapp/widgets/header.dart';
@@ -8,7 +7,7 @@ import 'package:coolflutterapp/widgets/illustration.dart';
 import 'package:flutter/material.dart';
 
 class ErrorScreen extends StatelessWidget {
-  Function onEditClick;
+  final Function onEditClick;
 
   ErrorScreen(this.onEditClick);
 

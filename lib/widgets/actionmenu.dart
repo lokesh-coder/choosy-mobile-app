@@ -87,11 +87,14 @@ class _ActionMenuState extends State<ActionMenu> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.check),
+                      icon: Icon(Icons.check, color: choosyColors['positive']),
                       onPressed: widget.onDelete,
                     ),
                     IconButton(
-                      icon: Icon(Icons.close),
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.pink.shade200,
+                      ),
                       onPressed: () {
                         setState(() {
                           deleteConfirmed = false;

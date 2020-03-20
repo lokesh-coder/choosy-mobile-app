@@ -1,8 +1,8 @@
-import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/config/icons.dart';
 import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/utils/notify.dart';
+import 'package:coolflutterapp/utils/toast.dart';
 import 'package:coolflutterapp/widgets/app-shell.dart';
 import 'package:coolflutterapp/widgets/blank-dice.dart';
 import 'package:coolflutterapp/widgets/choices-list.dart';
@@ -66,6 +66,9 @@ class DiceScreen extends StatelessWidget {
                           return ChoicesList(
                               id: dice.id,
                               data: dice.choices,
+                              onAdd: () {
+                                Toast.success('hiya you are awesome');
+                              },
                               onRemove: (id, item) async {
                                 await dicesModel.deleteChoice(id, item.id);
                                 notify(context, '${item.name} deleted!!');

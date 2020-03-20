@@ -6,8 +6,17 @@ class Toast {
   static success(String message) {
     Fluttertoast.showToast(
       msg: message,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: choosyColors['positive'].withOpacity(0.6),
+      gravity: ToastGravity.TOP,
+      backgroundColor: choosyColors['positive'],
+      textColor: Colors.white.withOpacity(0.8),
+    );
+  }
+
+  static error(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      gravity: ToastGravity.TOP,
+      backgroundColor: choosyColors['negative'],
       textColor: Colors.white.withOpacity(0.8),
     );
   }

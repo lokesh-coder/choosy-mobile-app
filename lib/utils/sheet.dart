@@ -1,5 +1,6 @@
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/config/icons.dart';
+import 'package:coolflutterapp/utils/toast.dart';
 import 'package:flutter/material.dart';
 
 formSheet(
@@ -57,6 +58,7 @@ formSheet(
                     ),
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
                           child: TextField(
@@ -64,13 +66,19 @@ formSheet(
                         controller: inpController,
                         keyboardType: TextInputType.text,
                         autofocus: true,
+                        maxLength: 50,
+                        maxLines: 1,
+                        keyboardAppearance: Brightness.dark,
+                        scrollPhysics: BouncingScrollPhysics(),
+                        scrollPadding: EdgeInsets.all(20),
                         decoration: InputDecoration(
                           hintText: placeholderText,
                           filled: true,
                           fillColor: choosyColors['input'],
+                          contentPadding: EdgeInsets.all(10),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10.7),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         onChanged: (text) {
@@ -88,7 +96,13 @@ formSheet(
                       IconButton(
                           icon: Icon(ChoosyIcon.send_plane_2_fill),
                           color: choosyColors['positive'],
+                          disabledColor:
+                              choosyColors['positive'].withOpacity(0.3),
                           onPressed: () {
+                            if (inpText.trim().length == 0) {
+                              Toast.error('nothing changed!');
+                              return null;
+                            }
                             _onFormSubmit(
                               inpController,
                               onEnter,
@@ -110,9 +124,6 @@ void _onFormSubmit(
   void onEnter(String text),
   String inpText,
 ) {
-  if (inpText.trim().length == 0) {
-    return;
-  }
   inpController.clear();
   onEnter(inpText);
   inpText = '';

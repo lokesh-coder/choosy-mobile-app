@@ -2,6 +2,7 @@ import 'package:coolflutterapp/pages/editor/dice.screen.dart';
 import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/utils/sheet.dart';
+import 'package:coolflutterapp/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +14,7 @@ class EditorPage extends StatelessWidget {
         titleName: "Add Choice",
         onEnter: (choiceName) {
           dicesModel.insertChoice(diceID, choiceName);
+          Toast.success('$choiceName added!');
         });
   }
 
@@ -29,8 +31,11 @@ class EditorPage extends StatelessWidget {
             onAdd: (diceName) async {
               if (dice.title != null) {
                 dicesModel.updateDice(dice.id, diceName);
+                Toast.success('Dice name updated!');
+                Navigator.of(context).pop();
               } else {
                 await dicesModel.insertDice(diceName);
+                Toast.success('Created new dice!');
               }
             });
       },
