@@ -31,7 +31,7 @@ class BlankDice extends StatelessWidget {
             height: 40,
           ),
           Button(
-            'create a item',
+            'Add new choice',
             onTap: onClick,
           )
         ],

@@ -17,8 +17,10 @@ class ResultScreen extends StatelessWidget {
       header: Header(
         title: '${dice.title}',
         leading: IconButton(
-          icon: Icon(ChoosyIcon.arrow_left_line,
-              color: Colors.white.withOpacity(0.5)),
+          icon: Icon(
+            ChoosyIcon.arrow_left_line,
+            color: Colors.white.withOpacity(0.7),
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },

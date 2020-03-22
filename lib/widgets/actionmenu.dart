@@ -43,7 +43,7 @@ class _ActionMenuState extends State<ActionMenu> {
                 color: choosyColors['negative'],
               ),
               title: Text(
-                'Edit the dice',
+                'Edit the card',
                 style: TextStyle(
                     color: choosyColors['title'], fontWeight: FontWeight.w600),
               ),
@@ -57,7 +57,7 @@ class _ActionMenuState extends State<ActionMenu> {
                   color: choosyColors['negative'],
                 ),
                 title: Text(
-                  'Delete the dice',
+                  'Delete the card',
                   style: TextStyle(
                       color: choosyColors['title'],
                       fontWeight: FontWeight.w600),

@@ -23,7 +23,8 @@ class Headlines extends StatelessWidget {
           ),
           Text(
             subheading,
-            style: TextStyle(fontSize: 14, color: choosyColors['text']),
+            style: TextStyle(
+                fontSize: 14, color: choosyColors['heading'].withOpacity(0.5)),
           )
         ],
       ),

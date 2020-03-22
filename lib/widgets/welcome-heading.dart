@@ -15,7 +15,7 @@ class WelcomeHeading extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Pick a card and start spinning",
+            "Pick a card and start shuffling",
             style: TextStyle(
                 fontWeight: FontWeight.w600, color: choosyColors['subheading']),
           )

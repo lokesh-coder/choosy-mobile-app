@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/icons.dart';
 import 'package:coolflutterapp/widgets/app-shell.dart';
 import 'package:coolflutterapp/widgets/dice-list.dart';
 import 'package:coolflutterapp/widgets/header.dart';
@@ -16,7 +17,7 @@ class DicesScreen extends StatelessWidget {
         title: 'Cards ($totalDices)',
         action: IconButton(
           icon: Icon(
-            Icons.add_circle_outline,
+            ChoosyIcon.add_fill,
             color: Colors.white.withOpacity(0.7),
           ),
           onPressed: onNewDice,

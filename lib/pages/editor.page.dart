@@ -31,11 +31,11 @@ class EditorPage extends StatelessWidget {
             onAdd: (diceName) async {
               if (dice.title != null) {
                 dicesModel.updateDice(dice.id, diceName);
-                Toast.success('Dice name updated!');
+                Toast.success('Card name updated!');
                 Navigator.of(context).pop();
               } else {
                 await dicesModel.insertDice(diceName);
-                Toast.success('Created new dice!');
+                Toast.success('Created new card!');
               }
             });
       },

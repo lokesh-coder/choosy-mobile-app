@@ -29,7 +29,7 @@ class DiceScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(
             ChoosyIcon.arrow_left_line,
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white.withOpacity(0.7),
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -40,8 +40,8 @@ class DiceScreen extends StatelessWidget {
           maintainState: true,
           child: IconButton(
             icon: Icon(
-              Icons.add,
-              color: Colors.white.withOpacity(0.5),
+              ChoosyIcon.add_fill,
+              color: Colors.white.withOpacity(0.7),
             ),
             onPressed: onFormOpen,
           ),

@@ -21,50 +21,42 @@ class ChoicesList extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         separatorBuilder: (ctx, i) => Divider(),
         itemBuilder: (BuildContext ctxt, int index) {
-          return Card(
-            clipBehavior: Clip.antiAlias,
-            elevation: 0,
-            color: Colors.transparent,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: Container(
-              color: Colors.transparent,
-              child: ListTile(
-                dense: true,
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                title: Container(
-                  child: Text(
-                    data[index].name,
-                    style: TextStyle(
-                      // color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      foreground: Paint()
-                        ..shader = LinearGradient(
-                          colors: <Color>[
-                            choosyColors['highlightBgStart'],
-                            choosyColors['highlightBgEnd'],
-                          ],
-                        ).createShader(
-                          new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
-                        ),
-                    ),
+          return TweenAnimationBuilder(
+            duration: Duration(milliseconds: 500),
+            curve: Curves.fastOutSlowIn,
+            tween: Tween<double>(begin: 40, end: 0),
+            builder: (context, val, child) {
+              return ListTile(
+                contentPadding: EdgeInsets.symmetric(vertical: val),
+                title: Text(
+                  data[index].name,
+                  style: TextStyle(
+                    // color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    foreground: Paint()
+                      ..shader = LinearGradient(
+                        colors: <Color>[
+                          choosyColors['highlightBgStart'],
+                          choosyColors['highlightBgEnd'],
+                        ],
+                      ).createShader(
+                        new Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+                      ),
                   ),
                 ),
                 trailing: IconButton(
                   icon: Icon(
                     ChoosyIcon.close_circle_line,
-                    color: choosyColors['heading'].withOpacity(0.3),
+                    color: choosyColors['heading'].withOpacity(0.2),
                   ),
                   onPressed: () async {
                     onRemove(id, data[index]);
                   },
                 ),
                 onTap: () {},
-              ),
-            ),
+              );
+            },
           );
         },
       ),

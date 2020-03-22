@@ -15,7 +15,7 @@ class HomeEmptyStateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppShell(
       header: Header(
-        title: 'choosy',
+        title: 'Choosy',
       ),
       child: Container(
         decoration: BoxDecoration(
@@ -32,8 +32,8 @@ class HomeEmptyStateScreen extends StatelessWidget {
               opacity: 0.5,
             ),
             Headlines(
-              'Don’t think too much!',
-              'Create a list and pick a random item',
+              'Which one to choose?',
+              'Create a list and Choosy will pick a random item',
             ),
             SizedBox(
               height: 10,

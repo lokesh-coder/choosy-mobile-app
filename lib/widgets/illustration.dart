@@ -10,7 +10,7 @@ class Illustration extends StatelessWidget {
     return SvgPicture.asset(
       'assets/svg/$fileName.svg',
       semanticsLabel: fileName,
-      width: 200,
+      height: 150,
     );
   }
 }

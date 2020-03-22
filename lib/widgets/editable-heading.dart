@@ -18,7 +18,7 @@ class EditableHeading extends StatelessWidget {
             // fontFamily: 'Gilroy',
             fontWeight: FontWeight.w900,
             fontSize: 20,
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withOpacity(0.7),
           ),
         ),
       ),
@@ -26,8 +26,8 @@ class EditableHeading extends StatelessWidget {
         await formSheet(
             context: context,
             defaultValue: heading ?? '',
-            placeholderText: 'type new dice name...',
-            titleName: "Dice name",
+            placeholderText: 'type new card name...',
+            titleName: "Card name",
             onEnter: onEnter);
       },
     );

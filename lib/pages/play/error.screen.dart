@@ -19,7 +19,7 @@ class ErrorScreen extends StatelessWidget {
           leading: IconButton(
             icon: Icon(
               ChoosyIcon.arrow_left_line,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withOpacity(0.7),
             ),
             onPressed: () {
               Navigator.of(context).pop();
@@ -36,10 +36,10 @@ class ErrorScreen extends StatelessWidget {
             ),
             Headlines(
               'Oops, there is a problem!',
-              'Dice should have atleast two choices to spin.',
+              'Card should have atleast two choices to spin.',
             ),
             Button(
-              'Edit this dice',
+              'Edit this card',
               onTap: onEditClick,
             )
           ],

@@ -38,8 +38,8 @@ class HomePage extends StatelessWidget {
     await formSheet(
         context: context,
         defaultValue: '',
-        placeholderText: 'type new dice name...',
-        titleName: "Dice name",
+        placeholderText: 'type new card name...',
+        titleName: "Card name",
         onEnter: (diceName) async {
           dicesModel.activeDiceID = await dicesModel.insertDice(diceName);
           Navigator.of(context).pop();

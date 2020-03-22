@@ -18,7 +18,10 @@ class AppShell extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.topRight,
-                colors: [Color(0xffAD548E), Color(0xffDF804A)]),
+                colors: [
+                  choosyColors['highlightBgStart'],
+                  choosyColors['highlightBgEnd']
+                ]),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

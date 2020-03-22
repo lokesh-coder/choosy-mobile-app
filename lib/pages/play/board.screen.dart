@@ -22,7 +22,7 @@ class BoardScreen extends StatelessWidget {
           leading: IconButton(
             icon: Icon(
               ChoosyIcon.arrow_left_line,
-              color: Colors.white.withOpacity(0.5),
+              color: Colors.white.withOpacity(0.7),
             ),
             onPressed: () {
               Navigator.of(context).pop();
@@ -40,10 +40,10 @@ class BoardScreen extends StatelessWidget {
             ),
             Headlines(
               dice.title,
-              'Shake yor phone to spin the dice!',
+              'Shake yor phone to shuffle!',
             ),
             Button(
-              'spin the dice',
+              'shuffle',
               onTap: onShake,
             )
           ],
