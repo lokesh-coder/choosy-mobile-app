@@ -10,7 +10,6 @@ class DiceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('widget: dicelist');
     return Container(
       color: choosyColors['bg'],
       child: Consumer<DicesModel>(

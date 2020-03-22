@@ -53,7 +53,6 @@ class DiceDao {
   }
 
   Future insertChoice(String id, Choice choice) async {
-    print('==> $id $choice');
     final finder = Finder(filter: Filter.equals('id', id));
     RecordSnapshot<int, Map<String, dynamic>> result =
         await _table.findFirst(await _db, finder: finder);

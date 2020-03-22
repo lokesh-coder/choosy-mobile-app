@@ -82,7 +82,6 @@ class _NextPickTimerState extends State<NextPickTimer> {
     if (diff <= 0) {
       timer.cancel();
       remainingTime = null;
-      print('TIMER STOPPED!');
       widget.onDone();
     }
     setState(() {});
