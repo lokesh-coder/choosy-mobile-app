@@ -8,7 +8,7 @@ class Randomzer extends StatefulWidget {
   final List items;
   final TextStyle style;
   final Function onRandomPick;
-  Randomzer({this.items, this.style, this.onRandomPick});
+  Randomzer({this.items, this.style = const TextStyle(), this.onRandomPick});
 
   @override
   _RandomzerState createState() => _RandomzerState();

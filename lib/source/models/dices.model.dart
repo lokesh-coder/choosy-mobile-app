@@ -8,7 +8,7 @@ class DicesModel with ChangeNotifier {
   String _activeDiceID;
   bool isLoading = false;
 
-  get activeDice {
+  Dice get activeDice {
     if (_activeDiceID == null) return Dice();
     return dices.firstWhere((d) => d.id == _activeDiceID, orElse: () => Dice());
   }

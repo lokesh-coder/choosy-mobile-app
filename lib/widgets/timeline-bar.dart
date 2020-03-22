@@ -49,24 +49,22 @@ class _TimelineBarState extends State<TimelineBar> {
                   width: 10,
                 ),
               ),
-              AnimatedContainer(
-                width: totalBarWidth - currentwidth,
-                duration: Duration(seconds: 1),
-                height: 6,
-                decoration: BoxDecoration(
-                  color: choosyColors['primary'],
-                  gradient: LinearGradient(
-                    colors: <Color>[
-                      choosyColors['highlightBgStart'],
-                      choosyColors['highlightBgEnd'],
-                    ],
+              if (totalBarWidth - currentwidth != 0)
+                AnimatedContainer(
+                  width: totalBarWidth - currentwidth,
+                  duration: Duration(seconds: 1),
+                  height: 6,
+                  decoration: BoxDecoration(
+                    color: choosyColors['primary'],
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        choosyColors['highlightBgStart'],
+                        choosyColors['highlightBgEnd'],
+                      ],
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(50)),
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(50)),
-                ),
-                child: SizedBox(
-                  width: 10,
-                ),
-              )
+                )
             ],
           ),
           SizedBox(

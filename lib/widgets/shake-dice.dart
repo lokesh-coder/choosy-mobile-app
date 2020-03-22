@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shake_plugin/flutter_shake_plugin.dart';
 
 class ShakeDice extends StatefulWidget {
-  final Null Function() onPhoneShake;
+  final VoidCallback onPhoneShake;
   ShakeDice({this.onPhoneShake});
 
   @override
@@ -18,7 +18,9 @@ class _ShakeDiceState extends State<ShakeDice> {
     shakePlugin = FlutterShakePlugin(
       shakeThresholdGravity: 30,
       vibrateDuration: 100,
-      onPhoneShaken: widget.onPhoneShake,
+      onPhoneShaken: () {
+        widget.onPhoneShake();
+      },
     )..startListening();
   }
 

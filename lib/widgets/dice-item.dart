@@ -115,7 +115,7 @@ class DiceItem extends StatelessWidget {
                   dicesModel.activeDiceID = dice.id;
                   Navigator.push(
                     context,
-                    FadeRoute(page: PlayPage(activeDiceID: dice.id)),
+                    FadeRoute(page: PlayPage()),
                   );
                 },
               ),

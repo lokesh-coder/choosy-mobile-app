@@ -11,42 +11,30 @@ import 'package:provider/provider.dart';
 
 class PlayPage extends StatelessWidget {
   final Random random = new Random();
-  final String activeDiceID;
-
-  PlayPage({this.activeDiceID});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<DicesModel>(
-        builder: (context, DicesModel dicesModel, child) {
-      Dice dice = dicesModel.activeDice;
-      bool hasChoices = dice.choices != null && dice.choices.length >= 2;
-      bool hasAlreadyPlayed = dice.lastPlayedTime != null;
+    final DicesModel dicesModel =
+        Provider.of<DicesModel>(context, listen: false);
 
-      var spinTheDice = () {
-        var randomChoiceIndex = random.nextInt(dice.choices.length);
-        dicesModel.setPlayedTime(dice.id, dice.choices[randomChoiceIndex].id);
-      };
+    Dice dice = dicesModel.activeDice;
+    bool hasChoices = dice.choices != null && dice.choices.length >= 2;
 
-      var goToEditor = () {
-        dicesModel.activeDiceID = dice.id;
-        Navigator.push(
-          context,
-          FadeRoute(page: EditorPage()),
-        );
-      };
+    // dicesModel.setPlayedTime(dice.id, dice.choices[randomChoiceIndex].id);
+    //  dicesModel.clearLastPlayedTime(dice.id);
 
-      if (!hasChoices) return ErrorScreen(goToEditor);
+    var goToEditor = () {
+      dicesModel.activeDiceID = dice.id;
+      Navigator.push(
+        context,
+        FadeRoute(page: EditorPage()),
+      );
+    };
 
-      if (!hasAlreadyPlayed)
-        return BoardScreen(
-          dice: dice,
-          onShake: spinTheDice,
-        );
+    if (!hasChoices) return ErrorScreen(goToEditor);
 
-      return ResultScreen(dice, onTimeOut: () async {
-        dicesModel.clearLastPlayedTime(dice.id);
-      });
-    });
+    return BoardScreen(
+      dice: dice,
+    );
   }
 }
