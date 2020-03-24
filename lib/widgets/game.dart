@@ -2,7 +2,6 @@ import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
 import 'package:coolflutterapp/widgets/randomizer.dart';
-import 'package:coolflutterapp/widgets/slideup-anim.dart';
 import 'package:coolflutterapp/widgets/timeline-bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -67,9 +66,26 @@ class _GameState extends State<Game> with SingleTickerProviderStateMixin {
       return Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(bottom: 0),
-            child: _getChoice(dicesModel),
+          Transform.translate(
+            offset: Offset(0, 0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  widget.dice.title,
+                  style: TextStyle(
+                      color: choosyColors['heading'],
+                      fontFamily: 'Gilroy',
+                      fontSize: 25,
+                      fontWeight: FontWeight.w900),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 0),
+                  child: _getChoice(dicesModel),
+                )
+              ],
+            ),
           ),
           _getTimebar(dicesModel)
         ],

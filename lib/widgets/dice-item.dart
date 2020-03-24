@@ -102,8 +102,13 @@ class DiceItem extends StatelessWidget {
                             ),
                             if (dice.lastPlayedTime != null)
                               NextPickTimer(
-                                  onDone: onTimeOut,
-                                  timeInMs: dice.lastPlayedTime),
+                                onDone: onTimeOut,
+                                timeInMs: dice.lastPlayedTime,
+                                labelStyles: TextStyle(
+                                  color:
+                                      choosyColors['heading'].withOpacity(0.5),
+                                ),
+                              ),
                           ],
                         ),
                       ],

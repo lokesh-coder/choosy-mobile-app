@@ -4,8 +4,8 @@ class SlideUpAnimation extends StatelessWidget {
   final Widget child;
   final AnimationController controller;
 
-  Animation<double> moveY;
-  Animation<double> fadeIn;
+  final Animation<double> moveY;
+  final Animation<double> fadeIn;
 
   SlideUpAnimation({this.child, this.controller})
       : moveY = Tween<double>(
