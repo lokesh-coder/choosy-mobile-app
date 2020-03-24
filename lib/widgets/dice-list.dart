@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DiceList extends StatelessWidget {
-  const DiceList({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +25,7 @@ class DiceList extends StatelessWidget {
                     dicesModel.clearLastPlayedTime(dicesModel.dices[index].id);
                   },
                   onDelete: (name) {
-                    notify(context, '$name deleted!!');
+                    notify(context, '$name deleted!');
                   });
             },
           ),

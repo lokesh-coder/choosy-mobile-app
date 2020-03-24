@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +18,15 @@ class BlankDice extends StatelessWidget {
             softWrap: true,
             textAlign: TextAlign.center,
             text: TextSpan(
-              text: 'Add choices to the list. You have to ',
+              text: appConfig['label.noChoice'][0],
               style: TextStyle(color: choosyColors['text']),
               children: <TextSpan>[
                 TextSpan(
-                    text: 'add atleast 2 choices ',
+                    text: appConfig['label.noChoice'][1],
                     style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: ' to play this item!'),
+                TextSpan(
+                  text: appConfig['label.noChoice'][2],
+                ),
               ],
             ),
           ),
@@ -31,7 +34,7 @@ class BlankDice extends StatelessWidget {
             height: 40,
           ),
           Button(
-            'Add new choice',
+            appConfig['label.addChoice'],
             onTap: onClick,
           )
         ],

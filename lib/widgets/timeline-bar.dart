@@ -30,7 +30,6 @@ class _TimelineBarState extends State<TimelineBar> {
   @override
   Widget build(BuildContext context) {
     double totalBarWidth = MediaQuery.of(context).size.width / 1.5;
-
     double currentwidth = calcProgress(totalBarWidth, remainingSec, totalSec);
 
     return Container(

@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:coolflutterapp/config/icons.dart';
 import 'package:coolflutterapp/source/models/dice.model.dart';
 import 'package:coolflutterapp/source/models/dices.model.dart';
@@ -66,12 +67,9 @@ class DiceScreen extends StatelessWidget {
                           return ChoicesList(
                               id: dice.id,
                               data: dice.choices,
-                              onAdd: () {
-                                Toast.success('hiya you are awesome');
-                              },
                               onRemove: (id, item) async {
                                 await dicesModel.deleteChoice(id, item.id);
-                                notify(context, '${item.name} deleted!!');
+                                notify(context, '${item.name} deleted!');
                               });
                         });
                       },
@@ -84,7 +82,7 @@ class DiceScreen extends StatelessWidget {
           ? Container(
               padding: EdgeInsets.all(20),
               child: Text(
-                'Tap on the title to edit it. Click plus icon in the top to add new choice.',
+                appConfig['label.choicesInfo'],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.6),

@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/config/icons.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +30,8 @@ class _ActionMenuState extends State<ActionMenu> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              'Action',
+              appConfig['label.editHeading'],
               style: TextStyle(
-                  // fontFamily: 'Gilroy',
                   color: choosyColors['subtitle'],
                   fontWeight: FontWeight.w600,
                   fontSize: 18),
@@ -43,7 +43,7 @@ class _ActionMenuState extends State<ActionMenu> {
                 color: choosyColors['negative'],
               ),
               title: Text(
-                'Edit the card',
+                appConfig['label.edit'],
                 style: TextStyle(
                     color: choosyColors['title'], fontWeight: FontWeight.w600),
               ),
@@ -57,7 +57,7 @@ class _ActionMenuState extends State<ActionMenu> {
                   color: choosyColors['negative'],
                 ),
                 title: Text(
-                  'Delete the card',
+                  appConfig['label.delete'],
                   style: TextStyle(
                       color: choosyColors['title'],
                       fontWeight: FontWeight.w600),
@@ -77,7 +77,7 @@ class _ActionMenuState extends State<ActionMenu> {
                   color: choosyColors['negative'],
                 ),
                 title: Text(
-                  'Are you sure? ',
+                  appConfig['label.deleteConfirm'],
                   style: TextStyle(
                       color: choosyColors['title'],
                       fontWeight: FontWeight.w600),

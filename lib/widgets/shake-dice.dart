@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shake_plugin/flutter_shake_plugin.dart';
 
@@ -16,7 +17,7 @@ class _ShakeDiceState extends State<ShakeDice> {
     super.initState();
 
     shakePlugin = FlutterShakePlugin(
-      shakeThresholdGravity: 30,
+      shakeThresholdGravity: appConfig['shakeGravity'],
       vibrateDuration: 100,
       onPhoneShaken: () {
         widget.onPhoneShake();

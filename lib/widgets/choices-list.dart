@@ -7,10 +7,8 @@ class ChoicesList extends StatelessWidget {
   final List<Choice> data;
   final String id;
   final Function onRemove;
-  final Function onAdd;
 
-  ChoicesList({Key key, this.id, this.data, this.onRemove, this.onAdd})
-      : super(key: key);
+  const ChoicesList({this.id, this.data, this.onRemove});
 
   @override
   Widget build(BuildContext context) {

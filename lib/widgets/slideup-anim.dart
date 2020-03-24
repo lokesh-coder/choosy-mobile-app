@@ -29,8 +29,6 @@ class SlideUpAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('###*** ${moveY.value}');
-
     return Transform.translate(
       offset: Offset(0, moveY.value),
       child: Opacity(

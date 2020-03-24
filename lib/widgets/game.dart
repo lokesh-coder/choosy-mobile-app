@@ -72,13 +72,18 @@ class _GameState extends State<Game> with SingleTickerProviderStateMixin {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  widget.dice.title,
-                  style: TextStyle(
-                      color: choosyColors['heading'],
-                      fontFamily: 'Gilroy',
-                      fontSize: 25,
-                      fontWeight: FontWeight.w900),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.dice.title,
+                    style: TextStyle(
+                      color: choosyColors['heading'].withOpacity(0.7),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.5,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 0),
@@ -126,9 +131,15 @@ class _GameState extends State<Game> with SingleTickerProviderStateMixin {
         style: style,
       );
     }
-    return Text(
-      dicesModel.activeDice.choices.firstWhere((c) => c.isPicked == true).name,
-      style: style.copyWith(color: choosyColors['primary']),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Text(
+        dicesModel.activeDice.choices
+            .firstWhere((c) => c.isPicked == true)
+            .name,
+        textAlign: TextAlign.center,
+        style: style.copyWith(color: choosyColors['primary']),
+      ),
     );
   }
 

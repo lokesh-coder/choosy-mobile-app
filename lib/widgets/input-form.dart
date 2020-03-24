@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/config/icons.dart';
 import 'package:coolflutterapp/utils/toast.dart';
@@ -10,11 +11,12 @@ class InputForm extends StatelessWidget {
   final String placeholderText;
   final void Function(String text) onEnter;
 
-  InputForm(
-      {this.titleName,
-      this.defaultValue,
-      this.onEnter,
-      this.placeholderText = ''});
+  InputForm({
+    this.titleName,
+    this.defaultValue,
+    this.onEnter,
+    this.placeholderText = '',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,9 @@ class InputForm extends StatelessWidget {
     );
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
       padding: const EdgeInsets.all(30.0),
       margin: const EdgeInsets.all(10.0),
       child: Container(
@@ -52,7 +55,7 @@ class InputForm extends StatelessWidget {
                     controller: inpController,
                     keyboardType: TextInputType.text,
                     autofocus: true,
-                    maxLength: 50,
+                    maxLength: appConfig['maxItemLength'],
                     maxLines: 1,
                     keyboardAppearance: Brightness.dark,
                     scrollPhysics: BouncingScrollPhysics(),

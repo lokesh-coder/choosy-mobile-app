@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -10,7 +11,7 @@ class Illustration extends StatelessWidget {
     return SvgPicture.asset(
       'assets/svg/$fileName.svg',
       semanticsLabel: fileName,
-      height: 150,
+      height: appConfig['illusHeight'],
     );
   }
 }

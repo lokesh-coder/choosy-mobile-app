@@ -16,15 +16,19 @@ class Headlines extends StatelessWidget {
           Text(
             heading,
             style: TextStyle(
-                color: choosyColors['heading'],
-                fontFamily: 'Gilroy',
-                fontSize: 25,
-                fontWeight: FontWeight.w900),
+              color: choosyColors['heading'],
+              fontFamily: 'Gilroy',
+              fontSize: 25,
+              fontWeight: FontWeight.w900,
+            ),
+            textAlign: TextAlign.center,
           ),
           Text(
             subheading,
             style: TextStyle(
-                fontSize: 14, color: choosyColors['heading'].withOpacity(0.5)),
+              fontSize: 14,
+              color: choosyColors['heading'].withOpacity(0.5),
+            ),
           )
         ],
       ),

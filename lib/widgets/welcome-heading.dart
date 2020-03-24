@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +16,11 @@ class WelcomeHeading extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Pick a card and start shuffling",
+            appConfig['label.cardsWelcomeNote'],
             style: TextStyle(
-                fontWeight: FontWeight.w600, color: choosyColors['subheading']),
+              fontWeight: FontWeight.w600,
+              color: choosyColors['subheading'],
+            ),
           )
         ],
       ),

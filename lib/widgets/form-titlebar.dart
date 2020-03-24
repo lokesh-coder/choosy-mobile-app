@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -63,13 +64,13 @@ class _FormTitleBarState extends State<FormTitleBar> {
     if (!isHelpOpen) return Container();
     if (widget.title == 'Card name') {
       return Text(
-        'It is just a list name. You can create many cards and shuffle them',
+        appConfig['label.cardCreateInfo'],
         style: TextStyle(
             color: choosyColors['heading'].withOpacity(0.5), fontSize: 12),
       );
     } else {
       return Text(
-        'Short name of the choice',
+        appConfig['label.choiceCreateInfo'],
         style: TextStyle(
             color: choosyColors['heading'].withOpacity(0.5), fontSize: 12),
       );

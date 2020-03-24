@@ -30,12 +30,14 @@ class _RandomzerState extends State<Randomzer> {
       duration: Duration(seconds: 2),
       builder: (BuildContext context, double val, Widget child) {
         Choice randomPick = _getRandomItem(widget.items);
-        return Text(chosenItem == null ? randomPick.name : chosenItem,
-            maxLines: 1,
-            style: widget.style.copyWith(
-              letterSpacing: val * 0.001,
-              color: clr,
-            ));
+        return Text(
+          chosenItem == null ? randomPick.name : chosenItem,
+          maxLines: 1,
+          style: widget.style.copyWith(
+            letterSpacing: val * 0.001,
+            color: clr,
+          ),
+        );
       },
       onEnd: () {
         setState(() {

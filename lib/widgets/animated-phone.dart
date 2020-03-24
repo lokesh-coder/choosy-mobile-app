@@ -30,7 +30,7 @@ class _AnimatedPhoneState extends State<AnimatedPhone>
     ).animate(
       CurvedAnimation(
         parent: animationController,
-        curve: Interval(0.3, 1.0, curve: Curves.easeInQuad),
+        curve: Interval(0.3, 1.0, curve: Curves.easeInSine),
       ),
     );
 

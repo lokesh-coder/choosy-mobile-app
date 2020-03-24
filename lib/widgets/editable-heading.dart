@@ -1,3 +1,4 @@
+import 'package:coolflutterapp/config/app-config.dart';
 import 'package:coolflutterapp/utils/sheet.dart';
 import 'package:flutter/material.dart';
 
@@ -10,12 +11,10 @@ class EditableHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        // color: choosyColors['tile'],
         child: Text(
-          heading ?? 'Whats for lunch?',
+          heading ?? appConfig['label.noTitle'],
           softWrap: true,
           style: TextStyle(
-            // fontFamily: 'Gilroy',
             fontWeight: FontWeight.w900,
             fontSize: 20,
             color: Colors.white.withOpacity(0.7),
@@ -24,11 +23,12 @@ class EditableHeading extends StatelessWidget {
       ),
       onTap: () async {
         await formSheet(
-            context: context,
-            defaultValue: heading ?? '',
-            placeholderText: 'type new card name...',
-            titleName: "Card name",
-            onEnter: onEnter);
+          context: context,
+          defaultValue: heading ?? '',
+          placeholderText: appConfig['label.cardInputPlaceholder'],
+          titleName: appConfig['label.cardInputHeading'],
+          onEnter: onEnter,
+        );
       },
     );
   }
