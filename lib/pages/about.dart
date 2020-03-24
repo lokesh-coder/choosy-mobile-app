@@ -11,6 +11,13 @@ class AboutPage extends StatelessWidget {
     return AppShell(
       header: Header(
         title: "About",
+        action: IconButton(
+          icon: Icon(Icons.share),
+          color: Colors.white.withOpacity(0.7),
+          onPressed: () {
+            Share.share('check out my website https://example.com');
+          },
+        ),
       ),
       child: Container(
         padding: EdgeInsets.all(30),
@@ -29,9 +36,11 @@ class AboutPage extends StatelessWidget {
               ),
               Text(
                 '''
-          Choosy is a simple application helps to decide a option if your are super confused or just in a situation to pick a random item from the list.
+          Choosy is a simple simple application helps you to pick a completely random item from a list. If your confused or dont have time to pick a choice, Choosy is just a right choice for you.
 
-          This app doesnt have any ads, no complecated stuffs, and it works offline.
+          Once a choice is selected you cannot run the same card again for 60 seconds. This is to avoid playing the card again if the choice is not something you wanted to accept.
+
+          Choosy doesnt have any ads, no complicated stuffs, and it works offline.
 
         ''',
                 style: TextStyle(
@@ -53,21 +62,14 @@ class AboutPage extends StatelessWidget {
               ),
               Text(
                 '''
-          Choosy is a open spource project, build with Dart and Flutter. Complete source code has been hosted in Github.
+          Choosy is an open spource project, build with Dart and Flutter. Complete source code has been hosted in Github.
 
-          Share it, if you like it!
         ''',
                 style: TextStyle(
                   color: choosyColors['heading'],
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),
-              ),
-              Button(
-                "Share",
-                onTap: () {
-                  Share.share('check out my website https://example.com');
-                },
               ),
             ],
           ),
