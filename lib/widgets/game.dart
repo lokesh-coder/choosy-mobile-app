@@ -79,7 +79,7 @@ class _GameState extends State<Game> with SingleTickerProviderStateMixin {
                     style: TextStyle(
                       color: choosyColors['heading'].withOpacity(0.7),
                       fontSize: 20,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                       letterSpacing: -0.5,
                     ),
                     textAlign: TextAlign.center,

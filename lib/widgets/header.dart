@@ -18,8 +18,7 @@ class Header extends StatelessWidget {
               title,
               style: TextStyle(
                 color: Colors.white.withOpacity(0.7),
-                fontWeight: FontWeight.w800,
-                // fontFamily: 'Gilroy',
+                fontWeight: FontWeight.w600,
                 letterSpacing: -1,
               ),
             ),

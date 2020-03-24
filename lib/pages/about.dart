@@ -1,6 +1,5 @@
 import 'package:coolflutterapp/config/colors.dart';
 import 'package:coolflutterapp/widgets/app-shell.dart';
-import 'package:coolflutterapp/widgets/button.dart';
 import 'package:coolflutterapp/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
@@ -15,7 +14,8 @@ class AboutPage extends StatelessWidget {
           icon: Icon(Icons.share),
           color: Colors.white.withOpacity(0.7),
           onPressed: () {
-            Share.share('check out my website https://example.com');
+            Share.share(
+                'Choosy android app - picking a random item from a list is just a fun');
           },
         ),
       ),
@@ -25,12 +25,14 @@ class AboutPage extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: <Widget>[
-              Text('What is choosy?',
-                  style: TextStyle(
-                    color: choosyColors['heading'],
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  )),
+              Text(
+                'What is choosy?',
+                style: TextStyle(
+                  color: choosyColors['heading'],
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),

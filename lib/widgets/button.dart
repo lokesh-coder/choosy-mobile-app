@@ -21,7 +21,9 @@ class Button extends StatelessWidget {
         child: Text(
           this.text.toUpperCase(),
           style: TextStyle(
-              fontWeight: FontWeight.w700, color: Colors.white.withAlpha(150)),
+            fontWeight: FontWeight.w600,
+            color: Colors.white.withAlpha(150),
+          ),
         ),
       ),
     );
