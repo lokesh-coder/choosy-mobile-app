@@ -1,7 +1,7 @@
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/utils/notify.dart';
-import 'package:coolflutterapp/widgets/dice-item.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/utils/notify.dart';
+import 'package:choosy/widgets/dice-item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

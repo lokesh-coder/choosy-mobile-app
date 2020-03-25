@@ -1,6 +1,6 @@
-import 'package:coolflutterapp/config/app-config.dart';
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/config/icons.dart';
+import 'package:choosy/config/app-config.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/config/icons.dart';
 import 'package:flutter/material.dart';
 
 class ActionMenu extends StatefulWidget {

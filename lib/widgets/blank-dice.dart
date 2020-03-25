@@ -1,6 +1,6 @@
-import 'package:coolflutterapp/config/app-config.dart';
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/widgets/button.dart';
+import 'package:choosy/config/app-config.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/widgets/button.dart';
 import 'package:flutter/material.dart';
 
 class BlankDice extends StatelessWidget {

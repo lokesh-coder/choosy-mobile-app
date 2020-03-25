@@ -1,7 +1,6 @@
 import 'dart:math';
-
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/source/models/choice.model.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/source/models/choice.model.dart';
 import 'package:flutter/material.dart';
 
 class Randomzer extends StatefulWidget {

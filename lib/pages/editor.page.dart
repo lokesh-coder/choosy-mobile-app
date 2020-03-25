@@ -1,8 +1,8 @@
-import 'package:coolflutterapp/pages/editor/dice.screen.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/utils/sheet.dart';
-import 'package:coolflutterapp/utils/toast.dart';
+import 'package:choosy/pages/editor/dice.screen.dart';
+import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/utils/sheet.dart';
+import 'package:choosy/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

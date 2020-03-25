@@ -1,6 +1,6 @@
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/widgets/app-shell.dart';
-import 'package:coolflutterapp/widgets/header.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/widgets/app-shell.dart';
+import 'package:choosy/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 

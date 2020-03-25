@@ -1,7 +1,9 @@
 final Map appConfig = {
   "maxItemLength": 50,
+  "timerInSec": 60,
   "illusHeight": 150.0,
   "shakeGravity": 30.0,
+  "shuffleTimeInSec": 2000,
   "label.editHeading": "Action",
   "label.edit": "Edit the card",
   "label.delete": "Delete the card",

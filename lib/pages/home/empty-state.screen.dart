@@ -1,9 +1,9 @@
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/widgets/app-shell.dart';
-import 'package:coolflutterapp/widgets/button.dart';
-import 'package:coolflutterapp/widgets/header.dart';
-import 'package:coolflutterapp/widgets/headlines.dart';
-import 'package:coolflutterapp/widgets/illustration.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/widgets/app-shell.dart';
+import 'package:choosy/widgets/button.dart';
+import 'package:choosy/widgets/header.dart';
+import 'package:choosy/widgets/headlines.dart';
+import 'package:choosy/widgets/illustration.dart';
 import 'package:flutter/material.dart';
 
 class HomeEmptyStateScreen extends StatelessWidget {

@@ -1,14 +1,14 @@
-import 'package:coolflutterapp/config/app-config.dart';
-import 'package:coolflutterapp/config/icons.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/utils/notify.dart';
-import 'package:coolflutterapp/utils/toast.dart';
-import 'package:coolflutterapp/widgets/app-shell.dart';
-import 'package:coolflutterapp/widgets/blank-dice.dart';
-import 'package:coolflutterapp/widgets/choices-list.dart';
-import 'package:coolflutterapp/widgets/editable-heading.dart';
-import 'package:coolflutterapp/widgets/header.dart';
+import 'package:choosy/config/app-config.dart';
+import 'package:choosy/config/icons.dart';
+import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/utils/notify.dart';
+import 'package:choosy/utils/toast.dart';
+import 'package:choosy/widgets/app-shell.dart';
+import 'package:choosy/widgets/blank-dice.dart';
+import 'package:choosy/widgets/choices-list.dart';
+import 'package:choosy/widgets/editable-heading.dart';
+import 'package:choosy/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

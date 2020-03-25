@@ -1,8 +1,8 @@
-import 'package:coolflutterapp/config/icons.dart';
-import 'package:coolflutterapp/widgets/app-shell.dart';
-import 'package:coolflutterapp/widgets/dice-list.dart';
-import 'package:coolflutterapp/widgets/header.dart';
-import 'package:coolflutterapp/widgets/welcome-heading.dart';
+import 'package:choosy/config/icons.dart';
+import 'package:choosy/widgets/app-shell.dart';
+import 'package:choosy/widgets/dice-list.dart';
+import 'package:choosy/widgets/header.dart';
+import 'package:choosy/widgets/welcome-heading.dart';
 import 'package:flutter/material.dart';
 
 class DicesScreen extends StatelessWidget {

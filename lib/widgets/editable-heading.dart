@@ -1,5 +1,5 @@
-import 'package:coolflutterapp/config/app-config.dart';
-import 'package:coolflutterapp/utils/sheet.dart';
+import 'package:choosy/config/app-config.dart';
+import 'package:choosy/utils/sheet.dart';
 import 'package:flutter/material.dart';
 
 class EditableHeading extends StatelessWidget {

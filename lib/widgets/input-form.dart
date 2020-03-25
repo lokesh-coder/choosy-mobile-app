@@ -1,8 +1,8 @@
-import 'package:coolflutterapp/config/app-config.dart';
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/config/icons.dart';
-import 'package:coolflutterapp/utils/toast.dart';
-import 'package:coolflutterapp/widgets/form-titlebar.dart';
+import 'package:choosy/config/app-config.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/config/icons.dart';
+import 'package:choosy/utils/toast.dart';
+import 'package:choosy/widgets/form-titlebar.dart';
 import 'package:flutter/material.dart';
 
 class InputForm extends StatelessWidget {

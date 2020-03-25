@@ -1,4 +1,4 @@
-# coolflutterapp
+# choosy
 
 A new Flutter application.
 

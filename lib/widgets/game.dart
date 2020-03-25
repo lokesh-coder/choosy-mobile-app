@@ -1,8 +1,8 @@
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/widgets/randomizer.dart';
-import 'package:coolflutterapp/widgets/timeline-bar.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/widgets/randomizer.dart';
+import 'package:choosy/widgets/timeline-bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

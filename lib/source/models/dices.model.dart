@@ -1,6 +1,6 @@
-import 'package:coolflutterapp/source/dao/dice.dao.dart';
-import 'package:coolflutterapp/source/models/choice.model.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
+import 'package:choosy/source/dao/dice.dao.dart';
+import 'package:choosy/source/models/choice.model.dart';
+import 'package:choosy/source/models/dice.model.dart';
 import 'package:flutter/material.dart';
 
 class DicesModel with ChangeNotifier {

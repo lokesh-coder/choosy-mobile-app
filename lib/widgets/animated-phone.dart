@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:coolflutterapp/widgets/illustration.dart';
+import 'package:choosy/widgets/illustration.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedPhone extends StatefulWidget {

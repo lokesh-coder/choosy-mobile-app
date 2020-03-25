@@ -1,10 +1,10 @@
 import "dart:math";
-import 'package:coolflutterapp/pages/editor.page.dart';
-import 'package:coolflutterapp/pages/play/board.screen.dart';
-import 'package:coolflutterapp/pages/play/error.screen.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/utils/fade-transition.dart';
+import 'package:choosy/pages/editor.page.dart';
+import 'package:choosy/pages/play/board.screen.dart';
+import 'package:choosy/pages/play/error.screen.dart';
+import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/utils/fade-transition.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

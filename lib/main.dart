@@ -1,5 +1,5 @@
-import 'package:coolflutterapp/pages/home.page.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
+import 'package:choosy/pages/home.page.dart';
+import 'package:choosy/source/models/dices.model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';

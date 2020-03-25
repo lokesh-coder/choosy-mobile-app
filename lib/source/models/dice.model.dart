@@ -1,4 +1,4 @@
-import 'package:coolflutterapp/source/models/choice.model.dart';
+import 'package:choosy/source/models/choice.model.dart';
 
 class Dice {
   final String id;

@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/config/icons.dart';
+import 'package:choosy/config/app-config.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/config/icons.dart';
 import 'package:flutter/material.dart';
 
 class NextPickTimer extends StatefulWidget {
@@ -35,7 +36,7 @@ class _NextPickTimerState extends State<NextPickTimer> {
 
     var lastPlayedDateTime =
         DateTime.fromMillisecondsSinceEpoch(widget.timeInMs);
-    var duration = Duration(minutes: 1);
+    var duration = Duration(seconds: appConfig['timerInSec']);
     time = DateTime.parse(lastPlayedDateTime.toString()).add(duration);
     super.initState();
   }

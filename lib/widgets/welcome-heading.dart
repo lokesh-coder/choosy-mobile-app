@@ -1,5 +1,5 @@
-import 'package:coolflutterapp/config/app-config.dart';
-import 'package:coolflutterapp/config/colors.dart';
+import 'package:choosy/config/app-config.dart';
+import 'package:choosy/config/colors.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeHeading extends StatelessWidget {

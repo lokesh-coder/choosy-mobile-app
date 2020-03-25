@@ -1,4 +1,4 @@
-package com.example.coolflutterapp;
+package com.example.choosy;
 
 import android.support.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity;

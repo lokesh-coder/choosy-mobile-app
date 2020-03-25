@@ -1,6 +1,6 @@
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
-import 'package:coolflutterapp/widgets/timer.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/widgets/timer.dart';
 import 'package:flutter/material.dart';
 
 class TimelineBar extends StatefulWidget {

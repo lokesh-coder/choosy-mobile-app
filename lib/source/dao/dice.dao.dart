@@ -1,6 +1,6 @@
-import 'package:coolflutterapp/source/db.setup.dart';
-import 'package:coolflutterapp/source/models/choice.model.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
+import "package:choosy/source/db.setup.dart";
+import 'package:choosy/source/models/choice.model.dart';
+import 'package:choosy/source/models/dice.model.dart';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/utils/value_utils.dart';
 import 'package:uuid/uuid.dart';

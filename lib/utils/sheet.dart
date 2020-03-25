@@ -1,4 +1,4 @@
-import 'package:coolflutterapp/widgets/input-form.dart';
+import 'package:choosy/widgets/input-form.dart';
 import 'package:flutter/material.dart';
 
 formSheet(

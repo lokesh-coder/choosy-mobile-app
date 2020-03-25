@@ -1,13 +1,13 @@
-import 'package:coolflutterapp/config/icons.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/widgets/animated-phone.dart';
-import 'package:coolflutterapp/widgets/app-shell.dart';
-import 'package:coolflutterapp/widgets/button.dart';
-import 'package:coolflutterapp/widgets/game.dart';
-import 'package:coolflutterapp/widgets/header.dart';
-import 'package:coolflutterapp/widgets/headlines.dart';
-import 'package:coolflutterapp/widgets/shake-dice.dart';
+import 'package:choosy/config/icons.dart';
+import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/widgets/animated-phone.dart';
+import 'package:choosy/widgets/app-shell.dart';
+import 'package:choosy/widgets/button.dart';
+import 'package:choosy/widgets/game.dart';
+import 'package:choosy/widgets/header.dart';
+import 'package:choosy/widgets/headlines.dart';
+import 'package:choosy/widgets/shake-dice.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

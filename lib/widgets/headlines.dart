@@ -1,4 +1,4 @@
-import 'package:coolflutterapp/config/colors.dart';
+import 'package:choosy/config/colors.dart';
 import 'package:flutter/material.dart';
 
 class Headlines extends StatelessWidget {

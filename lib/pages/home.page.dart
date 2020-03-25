@@ -1,10 +1,10 @@
-import 'package:coolflutterapp/pages/editor.page.dart';
-import 'package:coolflutterapp/pages/home/dices.screen.dart';
-import 'package:coolflutterapp/pages/home/empty-state.screen.dart';
-import 'package:coolflutterapp/pages/home/loading.screen.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/utils/fade-transition.dart';
-import 'package:coolflutterapp/utils/sheet.dart';
+import 'package:choosy/pages/editor.page.dart';
+import 'package:choosy/pages/home/dices.screen.dart';
+import 'package:choosy/pages/home/empty-state.screen.dart';
+import 'package:choosy/pages/home/loading.screen.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/utils/fade-transition.dart';
+import 'package:choosy/utils/sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

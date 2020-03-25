@@ -1,5 +1,5 @@
-import 'package:coolflutterapp/pages/about.dart';
-import 'package:coolflutterapp/utils/fade-transition.dart';
+import 'package:choosy/pages/about.dart';
+import 'package:choosy/utils/fade-transition.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {

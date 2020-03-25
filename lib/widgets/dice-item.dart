@@ -1,13 +1,13 @@
-import 'package:coolflutterapp/config/colors.dart';
-import 'package:coolflutterapp/pages/editor.page.dart';
-import 'package:coolflutterapp/pages/play.page.dart';
-import 'package:coolflutterapp/source/models/choice.model.dart';
-import 'package:coolflutterapp/source/models/dice.model.dart';
-import 'package:coolflutterapp/source/models/dices.model.dart';
-import 'package:coolflutterapp/utils/actionmenu.dart';
-import 'package:coolflutterapp/utils/fade-transition.dart';
-import 'package:coolflutterapp/widgets/tag.dart';
-import 'package:coolflutterapp/widgets/timer.dart';
+import 'package:choosy/config/colors.dart';
+import 'package:choosy/pages/editor.page.dart';
+import 'package:choosy/pages/play.page.dart';
+import 'package:choosy/source/models/choice.model.dart';
+import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/utils/actionmenu.dart';
+import 'package:choosy/utils/fade-transition.dart';
+import 'package:choosy/widgets/tag.dart';
+import 'package:choosy/widgets/timer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
