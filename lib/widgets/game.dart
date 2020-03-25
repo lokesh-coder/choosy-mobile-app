@@ -1,6 +1,7 @@
 import 'package:choosy/config/colors.dart';
 import 'package:choosy/source/models/dice.model.dart';
 import 'package:choosy/source/models/dices.model.dart';
+import 'package:choosy/widgets/pulse-animation.dart';
 import 'package:choosy/widgets/randomizer.dart';
 import 'package:choosy/widgets/timeline-bar.dart';
 import 'package:flutter/material.dart';
@@ -131,14 +132,14 @@ class _GameState extends State<Game> with SingleTickerProviderStateMixin {
         style: style,
       );
     }
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Text(
-        dicesModel.activeDice.choices
+      child: PulseAnimation(
+        text: dicesModel.activeDice.choices
             .firstWhere((c) => c.isPicked == true)
             .name,
-        textAlign: TextAlign.center,
-        style: style.copyWith(color: choosyColors['primary']),
+        style: style,
       ),
     );
   }

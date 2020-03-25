@@ -3,19 +3,11 @@ import 'package:choosy/config/colors.dart';
 import 'package:choosy/source/models/choice.model.dart';
 import 'package:flutter/material.dart';
 
-class Randomzer extends StatefulWidget {
+class Randomzer extends StatelessWidget {
   final List items;
   final TextStyle style;
   final Function onRandomPick;
   Randomzer({this.items, this.style = const TextStyle(), this.onRandomPick});
-
-  @override
-  _RandomzerState createState() => _RandomzerState();
-}
-
-class _RandomzerState extends State<Randomzer> {
-  var clr = choosyColors['heading'].withOpacity(0.2);
-  var chosenItem;
 
   _getRandomItem(list) {
     final _random = new Random();
@@ -28,23 +20,19 @@ class _RandomzerState extends State<Randomzer> {
       tween: Tween<double>(begin: -3000, end: 1000),
       duration: Duration(seconds: 2),
       builder: (BuildContext context, double val, Widget child) {
-        Choice randomPick = _getRandomItem(widget.items);
+        Choice randomPick = _getRandomItem(items);
         return Text(
-          chosenItem == null ? randomPick.name : chosenItem,
+          randomPick.name,
           maxLines: 1,
-          style: widget.style.copyWith(
+          style: style.copyWith(
             letterSpacing: val * 0.001,
-            color: clr,
+            color: choosyColors['heading'].withOpacity(0.2),
           ),
         );
       },
       onEnd: () {
-        setState(() {
-          clr = choosyColors['primary'];
-          var chosen = _getRandomItem(widget.items);
-          chosenItem = chosen.name;
-          widget.onRandomPick(chosen);
-        });
+        var chosen = _getRandomItem(items);
+        onRandomPick(chosen);
       },
     );
   }

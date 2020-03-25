@@ -2,6 +2,7 @@ import 'package:choosy/config/icons.dart';
 import 'package:choosy/widgets/app-shell.dart';
 import 'package:choosy/widgets/dice-list.dart';
 import 'package:choosy/widgets/header.dart';
+import 'package:choosy/widgets/pulse-animation.dart';
 import 'package:choosy/widgets/welcome-heading.dart';
 import 'package:flutter/material.dart';
 
