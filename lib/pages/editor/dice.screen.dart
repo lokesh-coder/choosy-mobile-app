@@ -3,7 +3,6 @@ import 'package:choosy/config/icons.dart';
 import 'package:choosy/source/models/dice.model.dart';
 import 'package:choosy/source/models/dices.model.dart';
 import 'package:choosy/utils/notify.dart';
-import 'package:choosy/utils/toast.dart';
 import 'package:choosy/widgets/app-shell.dart';
 import 'package:choosy/widgets/blank-dice.dart';
 import 'package:choosy/widgets/choices-list.dart';

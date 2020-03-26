@@ -1,6 +1,7 @@
 import 'package:choosy/source/dao/dice.dao.dart';
 import 'package:choosy/source/models/choice.model.dart';
 import 'package:choosy/source/models/dice.model.dart';
+import 'package:choosy/source/seed.dart';
 import 'package:flutter/material.dart';
 
 class DicesModel with ChangeNotifier {
@@ -65,6 +66,11 @@ class DicesModel with ChangeNotifier {
   deleteChoice(diceID, choiceID) async {
     await DiceDao().pickAChoice(diceID);
     await DiceDao().deleteChoice(diceID, choiceID);
+    fetchDices();
+  }
+
+  seed() async {
+    await DiceDao().dumpData(SeedData().data);
     fetchDices();
   }
 }

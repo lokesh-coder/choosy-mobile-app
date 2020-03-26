@@ -11,9 +11,20 @@ class DiceDao {
 
   Future<Database> get _db async => await AppDatabase.instance.database;
 
-  loadDummyData() async {
-    await _table.add(await _db, {"id": "1", "title": "one", "choices": []});
-    await _table.add(await _db, {"id": "2", "title": "two", "choices": []});
+  dumpData(List data) async {
+    for (var d = 0; d < data.length; d++) {
+      var choices = data[d].choices.map((c) {
+        return {
+          "id": Uuid().v1(),
+          "name": c,
+        };
+      });
+      await _table.add(await _db, {
+        "id": Uuid().v1(),
+        "title": data[d].title,
+        "choices": choices,
+      });
+    }
   }
 
   Future insertDice(Dice dice) async {
@@ -44,8 +55,6 @@ class DiceDao {
   }
 
   Future<List<Dice>> getAllDices() async {
-    // await loadDummyData();
-    // await dropDb();
     final recordSnapshot = await _table.find(await _db);
     return recordSnapshot.map((snapshot) {
       return Dice.fromJson(snapshot.value);

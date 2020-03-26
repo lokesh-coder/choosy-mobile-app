@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
     return Consumer<DicesModel>(
         builder: (BuildContext context, DicesModel dicesModel, child) {
       int totalDices = dicesModel.getDices().length;
+      print('*** $totalDices');
 
       if (dicesModel.isLoading) {
         return LoadingScreen();
@@ -30,7 +31,9 @@ class HomePage extends StatelessWidget {
       }
 
       return HomeEmptyStateScreen(
-          onNewDice: () => _formSheet(context, dicesModel));
+        onNewDice: () => _formSheet(context, dicesModel),
+        onSeedData: () => dicesModel.seed(),
+      );
     });
   }
 

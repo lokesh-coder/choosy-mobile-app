@@ -8,14 +8,22 @@ import 'package:flutter/material.dart';
 
 class HomeEmptyStateScreen extends StatelessWidget {
   final Function onNewDice;
+  final Function onSeedData;
 
-  HomeEmptyStateScreen({this.onNewDice});
+  HomeEmptyStateScreen({this.onNewDice, this.onSeedData});
 
   @override
   Widget build(BuildContext context) {
     return AppShell(
       header: Header(
         title: 'Choosy',
+        // action: IconButton(
+        //   icon: Icon(
+        //     Icons.cloud_download,
+        //     color: Colors.white.withOpacity(0.7),
+        //   ),
+        //   onPressed: onSeedData,
+        // ),
       ),
       child: Container(
         decoration: BoxDecoration(
